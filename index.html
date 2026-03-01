@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Singh | AI-Driven Digital Marketer Portfolio</title>
+
+    <!-- SEO Meta Description -->
+    <meta name="description"
+        content="Portfolio of Aditya Singh — AI-Driven Digital Marketer specialising in SEO, Prompt Engineering, Email Marketing and E-Commerce Strategy. BBA Marketing, Amity University.">
+    <meta name="author" content="Aditya Singh">
+    <meta name="keywords"
+        content="Aditya Singh, Digital Marketer, SEO, Prompt Engineering, AI Marketing, E-Commerce, Amity University, Portfolio">
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aditya Singh | AI-Driven Digital Marketer">
+    <meta property="og:description"
+        content="AI-Driven Digital Marketer with expertise in SEO, Prompt Engineering, Email Campaigns and E-Commerce. View my portfolio and projects.">
+    <meta property="og:image" content="og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aditya Singh | AI-Driven Digital Marketer">
+    <meta name="twitter:description"
+        content="AI-Driven Digital Marketer with expertise in SEO, Prompt Engineering, Email Campaigns and E-Commerce.">
+    <meta name="twitter:image" content="og-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind (defer to not block rendering) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Chart.js — loaded lazily via JS below -->
+    <style>
+        /* ─── Chart Container ───────────────────────────────────── */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            max-height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* ─── Custom Scrollbar ──────────────────────────────────── */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* ─── Animation Keyframes (DESIGN.md: clinical, precise) ── */
+        @keyframes zoomFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96);
+                filter: blur(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-24px);
+                filter: blur(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.80);
+            }
+
+            65% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes cardSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px) scale(0.98);
+                filter: blur(3px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* Section headings slide in from left */
+        .anim-heading {
+            opacity: 0;
+        }
+
+        .anim-heading.animated {
+            animation: slideInLeft 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Cards zoom-fade in */
+        .anim-card {
+            opacity: 0;
+        }
+
+        .anim-card.animated {
+            animation: cardSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Skill tags pop in (staggered via inline delay) */
+        .skill-tag-anim {
+            opacity: 0;
+        }
+
+        .skill-tag-anim.animated {
+            animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* ─── Mobile Bottom Nav ─────────────────────────────────── */
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .mobile-bottom-nav {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 60;
+                background: #000;
+                border-top: 1px solid #262626;
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+                justify-content: space-around;
+                align-items: stretch;
+            }
+
+            .mob-nav-btn {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 8px 4px 6px;
+                gap: 3px;
+                color: #737373;
+                font-size: 9px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                transition: color 0.15s;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .mob-nav-btn.active,
+            .mob-nav-btn:active {
+                color: #dc2626;
+            }
+
+            .mob-nav-btn svg {
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+            }
+
+            /* Push page content up so bottom nav doesn't overlap last section */
+            body {
+                padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-neutral-50 text-neutral-800 font-sans flex flex-col min-h-screen">
+
+    <!-- Row wrapper: sidebar + main (flex-row on desktop) -->
+    <div class="flex flex-col md:flex-row flex-1">
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity"
+            onclick="toggleMobileMenu()"></div>
+
+        <!-- Sidebar Navigation -->
+        <aside id="mobile-sidebar"
+            class="fixed inset-y-0 left-0 transform -translate-x-full md:sticky md:top-0 md:translate-x-0 md:h-screen transition duration-300 ease-in-out w-64 bg-black text-white flex-shrink-0 flex flex-col justify-between shadow-xl z-50 md:z-20">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold tracking-wider mb-1 text-red-400">ADITYA SINGH</h1>
+                <p class="text-xs text-neutral-400 uppercase tracking-widest mb-8">AI-Driven Marketer</p>
+
+                <nav class="space-y-2" role="navigation" aria-label="Portfolio sections">
+                    <a href="#overview" onclick="scrollToSection('overview')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 bg-neutral-900 text-white hover:bg-neutral-800 flex items-center gap-3 border-l-4 border-red-500"
+                        data-target="overview" aria-label="Navigate to Executive Summary section">
+                        <span aria-hidden="true">⚡</span> Executive Summary
+                    </a>
+                    <a href="#projects" onclick="scrollToSection('projects')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
+                        data-target="projects" aria-label="Navigate to AI-Generated Assets section">
+                        <span aria-hidden="true">🚀</span> AI-Generated Assets
+                    </a>
+                    <a href="#experience" onclick="scrollToSection('experience')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
+                        data-target="experience" aria-label="Navigate to Professional Experience section">
+                        <span aria-hidden="true">📈</span> Professional Exp.
+                    </a>
+                    <a href="#skills" onclick="scrollToSection('skills')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
+                        data-target="skills" aria-label="Navigate to Skill Analytics section">
+                        <span aria-hidden="true">🧠</span> Skill Analytics
+                    </a>
+                    <a href="#education" onclick="scrollToSection('education')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
+                        data-target="education" aria-label="Navigate to Education and Certifications section">
+                        <span aria-hidden="true">🎓</span> Education & Certs
+                    </a>
+
+                    <!-- Download Resume -->
+                    <a href="Resume/ADITYA_SINGH_RESUME_UPDATED.docx" download="Aditya_Singh_Resume.docx"
+                        class="w-full mt-2 px-4 py-2.5 rounded-lg flex items-center gap-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-500 active:scale-95 transition-all duration-200 border border-red-500"
+                        aria-label="Download Aditya Singh resume as DOCX">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Download Resume
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-6 bg-[#0a0a0a] space-y-4">
+                <div class="text-xs font-bold text-neutral-500 tracking-wider mb-4">CONTACT</div>
+
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aditya818610@gmail.com" target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-3 w-full group p-3 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 bg-neutral-900 group-hover:bg-red-500/10 rounded-full flex items-center justify-center transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-neutral-400 group-hover:text-red-400 transition-colors"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="text-[10px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">Email Me
+                        </div>
+                        <div
+                            class="text-xs font-bold text-neutral-300 group-hover:text-white transition-colors truncate">
+                            aditya818610@gmail.com</div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-neutral-600 group-hover:text-white transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100 flex-shrink-0"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+
+                <a href="https://wa.me/918335878691" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-3 w-full group p-3 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 bg-neutral-900 group-hover:bg-[#25D366]/10 rounded-full flex items-center justify-center transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-neutral-400 group-hover:text-[#25D366] transition-colors"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="text-[10px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">WhatsApp
+                        </div>
+                        <div
+                            class="text-xs font-bold text-neutral-300 group-hover:text-white transition-colors truncate">
+                            +91
+                            8335878691</div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-neutral-600 group-hover:text-white transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100 flex-shrink-0"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+
+                <a href="https://www.linkedin.com/in/aditya-singh-43162136b" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-3 w-full group p-3 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 bg-neutral-900 group-hover:bg-[#0a66c2]/10 rounded-full flex items-center justify-center transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-neutral-400 group-hover:text-[#0a66c2] transition-colors"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="text-[10px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">Connect
+                        </div>
+                        <div
+                            class="text-[14px] font-bold text-neutral-300 group-hover:text-white transition-colors truncate">
+                            LinkedIn</div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-neutral-600 group-hover:text-white transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100 flex-shrink-0"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto relative bg-neutral-50" id="main-scroll">
+
+            <!-- Header Mobile (only visible on small screens) -->
+            <div
+                class="md:hidden bg-black text-white p-4 flex justify-between items-center shadow-md sticky top-0 z-30">
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleMobileMenu()"
+                        class="p-1 hover:bg-neutral-800 rounded transition-colors active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <span class="font-bold">Aditya Singh</span>
+                </div>
+                <span class="text-xs text-red-400 font-bold tracking-wider">PORTFOLIO</span>
+            </div>
+
+            <!-- Content Container -->
+            <div class="max-w-7xl mx-auto p-6 md:p-10 pb-20 space-y-24">
+
+                <!-- VIEW: OVERVIEW -->
+                <section id="overview" class="view-section scroll-mt-20">
+                    <header class="mb-8">
+                        <h2 class="anim-heading text-3xl font-bold text-neutral-800 mb-2">The Commerce + AI Advantage
+                        </h2>
+                        <p class="text-neutral-600 max-w-3xl">
+                            AI-Driven Digital Marketer and BBA Marketing student at <strong>Amity University</strong>
+                            (Graduating 2027) with a strong foundation in digital marketing, SEO, Email Marketing and
+                            business strategy. Known for utilizing advanced AI tools and prompt engineering to instantly
+                            build landing pages, Web Apps, and data assets to execute campaigns rapidly. Skilled in
+                            leveraging MS Excel, Power BI, Zapier, and WordPress. Committed to continuous learning
+                            through
+                            certifications in Digital marketing, e-commerce, AI, and Content Optimization.
+                        </p>
+
+                        <!-- Download Resume CTA -->
+                        <a href="Resume/ADITYA_SINGH_RESUME_UPDATED.docx" download="Aditya_Singh_Resume.docx"
+                            class="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white text-sm font-semibold rounded-lg transition-all duration-200 active:scale-95 border border-neutral-700 hover:border-neutral-500"
+                            aria-label="Download Aditya Singh resume">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download Resume
+                        </a>
+                    </header>
+
+                    <!-- Key Stats Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        <div class="anim-card bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                            style="animation-delay:0ms">
+                            <div class="text-4xl font-bold text-red-500 mb-1">3+</div>
+                            <div class="text-sm font-semibold text-neutral-500 uppercase">Years Experience</div>
+                            <p class="text-xs text-neutral-400 mt-2">Including Freelance & Internships</p>
+                        </div>
+                        <div class="anim-card bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                            style="animation-delay:120ms">
+                            <div class="text-4xl font-bold text-neutral-900 mb-1">2</div>
+                            <div class="text-sm font-semibold text-neutral-500 uppercase">Live Web Apps</div>
+                            <p class="text-xs text-neutral-400 mt-2">Full-stack development projects</p>
+                        </div>
+                        <div class="anim-card bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                            style="animation-delay:240ms">
+                            <div class="text-4xl font-bold text-neutral-500 mb-1">8+</div>
+                            <div class="text-sm font-semibold text-neutral-500 uppercase">Certifications</div>
+                            <p class="text-xs text-neutral-400 mt-2">Google, UPenn, Vanderbilt</p>
+                        </div>
+                    </div>
+
+                    <!-- Bio Card -->
+                    <div class="bg-white rounded-xl shadow-sm border border-neutral-200 p-8 mb-8">
+                        <h3 class="text-xl font-bold mb-4 border-b pb-2">Why Hire a Marketer Who Uses AI?</h3>
+                        <p class="text-neutral-700 leading-relaxed mb-4">
+                            Traditional marketers rely on external agencies or engineering teams to launch campaigns,
+                            test
+                            variations, and build landing pages. That takes weeks and destroys ROI. As a BBA Marketing
+                            student at <strong>Amity University</strong> (Graduating 2027), I act as both the strategist
+                            and
+                            the rapid asset builder.
+                        </p>
+                        <p class="text-neutral-700 leading-relaxed">
+                            By utilizing advanced AI tools, I conceptualize a campaign, write the direct-response copy,
+                            generate the web assets, and deploy the entire funnel in a fraction of the time. Skilled in
+                            MS
+                            Excel, Power BI, Zapier, and WordPress—this means lower overhead, rapid A/B testing, and a
+                            sharp
+                            focus on business growth.
+                        </p>
+                    </div>
+
+                    <div class="bg-neutral-100 border-l-4 border-neutral-900 p-4 rounded-r-lg">
+                        <h4 class="font-bold text-blue-800">Current Focus</h4>
+                        <p class="text-blue-700 text-sm mt-1">
+                            Mastering Google Ads & Performance Marketing while scaling freelance web development
+                            services
+                            for local businesses.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- VIEW: PROJECTS -->
+                <section id="projects" class="view-section scroll-mt-20">
+                    <header class="mb-8">
+                        <h2 class="anim-heading text-3xl font-bold text-neutral-800 mb-2">AI-Generated Marketing Assets
+                        </h2>
+                        <p class="text-neutral-600">
+                            A showcase of pure ROI and rapid execution. These projects demonstrate my ability to
+                            conceptualize a marketing goal and instantly deploy the digital assets required to capture
+                            leads
+                            and drive conversions using AI—all without a traditional engineering team.
+                        </p>
+                    </header>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Project 1 -->
+                        <div class="anim-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-neutral-100 flex flex-col h-full"
+                            style="animation-delay:100ms">
+                            <div class="h-2 bg-red-500 w-full"></div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-neutral-900">A.S. Enterprise B2B Website</h3>
+                                        <span
+                                            class="inline-block bg-red-50 text-red-700 text-xs px-2 py-1 rounded mt-1">Live
+                                            Deployment</span>
+                                    </div>
+                                    <span class="text-2xl">🌍</span>
+                                </div>
+                                <div class="text-neutral-600 text-sm mb-6 flex-grow space-y-3">
+                                    <p><strong>The Marketing Goal:</strong> Build a high-converting digital storefront
+                                        to
+                                        capture qualified B2B wholesale inquiries for an export business.</p>
+                                    <p><strong>The Execution:</strong> Instead of waiting weeks for an agency, I
+                                        utilized AI
+                                        web generation to rapidly deploy a responsive, SEO-optimized site with a
+                                        seamless
+                                        lead capture system integrated directly into a CRM workflow.</p>
+                                </div>
+
+                                <div class="mb-6">
+                                    <h4 class="text-xs font-bold text-neutral-400 uppercase tracking-wide mb-2">Tech &
+                                        Skills
+                                    </h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Web
+                                            Development</span>
+                                        <span
+                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">UX
+                                            Design</span>
+                                        <span
+                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Lead
+                                            Gen</span>
+                                        <span
+                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Vercel</span>
+                                    </div>
+                                </div>
+
+                                <a href="https://as-enterprise-coral.vercel.app/#inquiry" target="_blank"
+                                    class="w-full text-center bg-black text-white py-3 rounded-lg hover:bg-red-600 transition-all duration-200 active:scale-95 font-medium">
+                                    Visit Live Site ↗
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div
+                            class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-neutral-100 flex flex-col h-full">
+                            <div class="h-2 bg-neutral-1000 w-full"></div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-neutral-900">Forge Web Application</h3>
+                                        <span
+                                            class="inline-block bg-red-50 text-red-700 text-xs px-2 py-1 rounded mt-1">Live
+                                            Deployment</span>
+                                    </div>
+                                    <span class="text-2xl">⚙️</span>
+                                </div>
+                                <div class="text-neutral-600 text-sm mb-6 flex-grow space-y-3">
+                                    <p><strong>The Marketing Goal:</strong> Create an interactive, value-driven web
+                                        application to serve as a powerful lead magnet and engagement tool.</p>
+                                    <p><strong>The Execution:</strong> Mastered prompt engineering to instruct AI code
+                                        models to build a complex Progressive Web App (PWA) from scratch, turning a
+                                        strategic concept into a live product in record time.</p>
+                                </div>
+
+                                <div class="mb-6">
+                                    <h4 class="text-xs font-bold text-neutral-400 uppercase tracking-wide mb-2">Tech &
+                                        Skills
+                                    </h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">AI
+                                            Integration</span>
+                                        <span
+                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Prompt
+                                            Engineering</span>
+                                        <span
+                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">PWA</span>
+                                    </div>
+                                </div>
+
+                                <a href="https://forge-by-aditya.web.app/?source=pwa" target="_blank"
+                                    class="w-full text-center bg-black text-white py-3 rounded-lg hover:bg-neutral-800 transition-all duration-200 active:scale-95 font-medium">
+                                    Launch App ↗
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIEW: EXPERIENCE -->
+                <section id="experience" class="view-section scroll-mt-20">
+                    <header class="mb-6">
+                        <h2 class="text-3xl font-bold text-neutral-800 mb-2">Professional Experience</h2>
+                        <p class="text-neutral-600">A timeline of my professional journey, highlighting key roles and
+                            quantitative impacts.</p>
+                    </header>
+
+                    <!-- Impact Chart Banner -->
+                    <div
+                        class="bg-white rounded-xl border border-neutral-100 shadow-sm p-4 mb-6 flex flex-col sm:flex-row items-center gap-4">
+                        <div class="flex-shrink-0 text-center sm:text-left">
+                            <div class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">Impact
+                                Estimation
+                            </div>
+                            <div class="text-xs text-neutral-400">Based on resume metrics (Rank, Revenue, Lead Gen)
+                            </div>
+                        </div>
+                        <div class="flex-1 w-full" style="height:120px; max-height:120px;">
+                            <canvas id="experienceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Compact Job Cards -->
+                    <div class="space-y-4">
+
+                        <!-- Job 1: Aglo Bond -->
+                        <div
+                            class="bg-white rounded-xl border border-neutral-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+                            <div class="flex flex-col md:flex-row">
+                                <!-- Left: Role Info -->
+                                <div
+                                    class="md:w-56 flex-shrink-0 bg-neutral-50 border-r border-neutral-100 p-5 flex flex-col justify-center">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></span>
+                                        <h3 class="font-bold text-neutral-800 text-sm">Aglo Bond Pvt Ltd.</h3>
+                                    </div>
+                                    <div class="text-xs font-semibold text-red-600 mb-2 pl-4">Digital Marketing & Market
+                                        Research Intern</div>
+                                    <span
+                                        class="text-xs font-mono text-neutral-400 bg-white border border-neutral-200 px-2 py-0.5 rounded w-fit ml-4">Jun
+                                        '25 – Aug '25</span>
+                                </div>
+                                <!-- Right: Bullets in 2-col grid -->
+                                <div class="flex-1 p-5">
+                                    <ul
+                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-600">
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Conducted
+                                            quantitative & qualitative market research (surveys, distributor interviews)
+                                            to
+                                            segment markets.</li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Used Google
+                                            Trends
+                                            & Search Console to identify seasonal demand for FMCG categories.</li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Compiled and
+                                            cleaned data for lead generation and email campaigns using Excel and Zapier.
+                                        </li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Supported email
+                                            &
+                                            WhatsApp outreach campaigns, ensuring brand consistency.</li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Performed
+                                            keyword
+                                            research and supported Google Ads setup; monitored basic KPIs for reporting.
+                                        </li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Created Excel
+                                            dashboards and PowerPoint decks for data storytelling and stakeholder
+                                            presentations.</li>
+                                        <li class="flex gap-2 sm:col-span-2"><span
+                                                class="text-red-400 mt-0.5">›</span>Utilized AI tools (ChatGPT, Canva
+                                            AI)
+                                            for research summaries, content creation, and visual design.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job 2: Amazon India -->
+                        <div
+                            class="bg-white rounded-xl border border-neutral-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+                            <div class="flex flex-col md:flex-row">
+                                <div
+                                    class="md:w-56 flex-shrink-0 bg-neutral-50 border-r border-neutral-100 p-5 flex flex-col justify-center">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span>
+                                        <h3 class="font-bold text-neutral-800 text-sm">Amazon India</h3>
+                                    </div>
+                                    <div class="text-xs font-semibold text-neutral-700 mb-0.5 pl-4">E-commerce Seller
+                                    </div>
+                                    <div class="text-xs text-neutral-400 pl-4 mb-2">ID: A35RU6FGL0700V</div>
+                                    <span
+                                        class="text-xs font-mono text-neutral-400 bg-white border border-neutral-200 px-2 py-0.5 rounded w-fit ml-4">Dec
+                                        '24 – May '25</span>
+                                </div>
+                                <div class="flex-1 p-5">
+                                    <ul
+                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-600">
+                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Managed
+                                            Amazon
+                                            India storefront, overseeing product listings, order fulfillment, and
+                                            customer
+                                            service.</li>
+                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Conducted
+                                            keyword research and implemented SEO strategies to improve product
+                                            visibility
+                                            and search ranking.</li>
+                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Analyzed
+                                            sales
+                                            trends and customer feedback to optimize product offerings and enhance
+                                            satisfaction.</li>
+                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Utilized
+                                            data
+                                            insights to drive revenue growth and increase popularity rank across
+                                            multiple
+                                            categories.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job 3: Freelance -->
+                        <div
+                            class="bg-white rounded-xl border border-neutral-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+                            <div class="flex flex-col md:flex-row">
+                                <div
+                                    class="md:w-56 flex-shrink-0 bg-neutral-50 border-r border-neutral-100 p-5 flex flex-col justify-center">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="w-2 h-2 rounded-full bg-neutral-400 flex-shrink-0"></span>
+                                        <h3 class="font-bold text-neutral-800 text-sm">Freelance</h3>
+                                    </div>
+                                    <div class="text-xs font-semibold text-neutral-500 mb-2 pl-4">Digital Marketing
+                                        Consultant</div>
+                                    <span
+                                        class="text-xs font-mono text-neutral-400 bg-white border border-neutral-200 px-2 py-0.5 rounded w-fit ml-4">Jan
+                                        '23 – Jan '24</span>
+                                </div>
+                                <div class="flex-1 p-5">
+                                    <ul
+                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-600">
+                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Delivered
+                                            customized digital marketing services including SEO, keyword research, and
+                                            content optimization, focusing on local business growth.</li>
+                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Executed
+                                            SEO
+                                            audits and optimized content to improve organic search traffic.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- VIEW: SKILLS -->
+                <section id="skills" class="view-section scroll-mt-20">
+                    <header class="mb-8">
+                        <h2 class="anim-heading text-3xl font-bold text-neutral-800 mb-2">Skill Analytics</h2>
+                        <p class="text-neutral-600">
+                            A quantitative breakdown of my skill set. The radar chart below illustrates the
+                            multi-disciplinary balance between Marketing, Technology, and Research capabilities.
+                        </p>
+                    </header>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <!-- Skill Categories -->
+                        <div class="space-y-6">
+                            <div
+                                class="anim-card bg-white p-5 rounded-lg border border-neutral-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="font-bold text-red-600 mb-3 flex items-center gap-2">
+                                    <span>🎯</span> Core Marketing
+                                </h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:0ms">SEO</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:50ms">Digital
+                                        Marketing</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:100ms">Email
+                                        Marketing</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:150ms">E-commerce
+                                        Strategy</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:200ms">Market
+                                        Research</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:250ms">Consumer
+                                        Psychology</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:300ms">Market
+                                        Analysis</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:350ms">Google Ads
+                                        Basics</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:400ms">Local Lead
+                                        Gen</span>
+                                </div>
+                            </div>
+
+                            <div
+                                class="anim-card bg-white p-5 rounded-lg border border-neutral-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                                    <span>🤖</span> AI & Automation
+                                </h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:60ms">Prompt
+                                        Engineering</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:110ms">Marketing
+                                        Automation</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:160ms">AI Web
+                                        Generation</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:210ms">Data Analysis
+                                        via AI</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:260ms">Zapier
+                                        Workflows</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:310ms">Content
+                                        Optimization</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:360ms">MS
+                                        Office</span>
+                                    <span class="skill-tag skill-tag-anim" style="animation-delay:410ms">Video Editing
+                                        Basics</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Radar Chart -->
+                        <div
+                            class="bg-white p-4 rounded-xl shadow-lg border border-neutral-100 flex justify-center items-center">
+                            <div class="chart-container">
+                                <canvas id="skillsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIEW: EDUCATION -->
+                <section id="education" class="view-section scroll-mt-20">
+                    <header class="mb-8">
+                        <h2 class="anim-heading text-3xl font-bold text-neutral-800 mb-2">Education & Certifications
+                        </h2>
+                        <p class="text-neutral-600">
+                            My formal education and continuous learning journey. I actively supplement my university
+                            degree
+                            with specialized certifications from industry leaders.
+                        </p>
+                    </header>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                        <!-- Formal Education -->
+                        <div class="bg-black text-white rounded-xl p-8 shadow-xl">
+                            <h3 class="text-xl font-bold text-red-400 mb-6">Formal Education</h3>
+                            <div class="mb-6">
+                                <h4 class="text-2xl font-bold">BBA Honours</h4>
+                                <div class="text-neutral-300 mt-1">Amity University Kolkata</div>
+                                <div class="text-sm text-neutral-500 font-mono mt-1">2023 - 2027</div>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-neutral-500 uppercase tracking-widest">Focus
+                                    Areas</span>
+                                <ul class="mt-3 space-y-2 text-sm text-neutral-300">
+                                    <li class="flex items-center gap-2"><span
+                                            class="w-1.5 h-1.5 bg-red-500 rounded-full"></span> Marketing Strategy</li>
+                                    <li class="flex items-center gap-2"><span
+                                            class="w-1.5 h-1.5 bg-red-500 rounded-full"></span> Branding</li>
+                                    <li class="flex items-center gap-2"><span
+                                            class="w-1.5 h-1.5 bg-red-500 rounded-full"></span> Digital Transformation
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Certifications Chart & List -->
+                        <div class="bg-white rounded-xl p-6 shadow-md border border-neutral-100">
+                            <div class="flex flex-col items-center mb-6">
+                                <h3 class="font-bold text-neutral-800 mb-2">Certification Sources</h3>
+                                <div class="chart-container" style="height: 200px;">
+                                    <canvas id="certsChart"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 max-h-80 overflow-y-auto pr-2 custom-scroll">
+                                <a href="https://coursera.org/share/519627125eb2e26739477f60d4ee6869" target="_blank"
+                                    class="cert-item block hover:bg-neutral-50 transition-colors group cursor-pointer relative rounded-md">
+                                    <div
+                                        class="absolute right-3 top-1/2 -tranneutral-y-1/2 text-neutral-300 group-hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 font-bold">
+                                        ↗</div>
+                                    <div class="font-bold text-sm group-hover:text-red-600 transition-colors pr-6">
+                                        Foundation of Digital Marketing and E-commerce</div>
+                                    <div class="text-xs text-neutral-500">Google</div>
+                                </a>
+                                <a href="https://coursera.org/share/ca798e853510c7451bc447289f770ad4" target="_blank"
+                                    class="cert-item block hover:bg-neutral-50 transition-colors group cursor-pointer relative rounded-md">
+                                    <div
+                                        class="absolute right-3 top-1/2 -tranneutral-y-1/2 text-neutral-300 group-hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 font-bold">
+                                        ↗</div>
+                                    <div class="font-bold text-sm group-hover:text-red-600 transition-colors pr-6">
+                                        Attract and Engage Customers with Digital Marketing</div>
+                                    <div class="text-xs text-neutral-500">Google</div>
+                                </a>
+                                <a href="https://coursera.org/share/0502897f0ecad80adacec377d275b694" target="_blank"
+                                    class="cert-item block hover:bg-neutral-50 transition-colors group cursor-pointer relative rounded-md">
+                                    <div
+                                        class="absolute right-3 top-1/2 -tranneutral-y-1/2 text-neutral-300 group-hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 font-bold">
+                                        ↗</div>
+                                    <div class="font-bold text-sm group-hover:text-red-600 transition-colors pr-6">Think
+                                        outside the Inbox: Email Marketing</div>
+                                    <div class="text-xs text-neutral-500">Google</div>
+                                </a>
+                                <a href="https://coursera.org/share/1df8089aa91cdf0db8297343cb0656a2" target="_blank"
+                                    class="cert-item block hover:bg-neutral-50 transition-colors group cursor-pointer relative rounded-md">
+                                    <div
+                                        class="absolute right-3 top-1/2 -tranneutral-y-1/2 text-neutral-300 group-hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 font-bold">
+                                        ↗</div>
+                                    <div class="font-bold text-sm group-hover:text-red-600 transition-colors pr-6">Viral
+                                        Marketing and How to Craft Contagious Content</div>
+                                    <div class="text-xs text-neutral-500">University of Pennsylvania</div>
+                                </a>
+                                <a href="https://coursera.org/share/40c1be8cccd5cb4a9d0d41db2eee17b6" target="_blank"
+                                    class="cert-item block hover:bg-neutral-50 transition-colors group cursor-pointer relative rounded-md">
+                                    <div
+                                        class="absolute right-3 top-1/2 -tranneutral-y-1/2 text-neutral-300 group-hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 font-bold">
+                                        ↗</div>
+                                    <div class="font-bold text-sm group-hover:text-red-600 transition-colors pr-6">From
+                                        likes to Leads: Interact with Customers Online</div>
+                                    <div class="text-xs text-neutral-500">Google</div>
+                                </a>
+                                <a href="https://coursera.org/share/688697ed30fb624105b2bbae795bf237" target="_blank"
+                                    class="cert-item block hover:bg-neutral-50 transition-colors group cursor-pointer relative rounded-md">
+                                    <div
+                                        class="absolute right-3 top-1/2 -tranneutral-y-1/2 text-neutral-300 group-hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 font-bold">
+                                        ↗</div>
+                                    <div class="font-bold text-sm group-hover:text-red-600 transition-colors pr-6">
+                                        Google
+                                        SEO Fundamentals</div>
+                                    <div class="text-xs text-neutral-500">UC Davis</div>
+                                </a>
+                                <a href="https://coursera.org/share/2bacbb35aaf6ef678742f9643bca1d9b" target="_blank"
+                                    class="cert-item block hover:bg-neutral-50 transition-colors group cursor-pointer relative rounded-md">
+                                    <div
+                                        class="absolute right-3 top-1/2 -tranneutral-y-1/2 text-neutral-300 group-hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 font-bold">
+                                        ↗</div>
+                                    <div class="font-bold text-sm group-hover:text-red-600 transition-colors pr-6">
+                                        Google
+                                        ADS For Beginners</div>
+                                    <div class="text-xs text-neutral-500">Coursera</div>
+                                </a>
+                                <div class="cert-item block relative rounded-md">
+                                    <div class="font-bold text-sm pr-6">AI for Everyone</div>
+                                    <div class="text-xs text-neutral-500">DeepLearning.AI (Andrew Ng)</div>
+                                </div>
+                                <div class="cert-item block relative rounded-md">
+                                    <div class="font-bold text-sm pr-6">Prompt Engineering for chatgpt</div>
+                                    <div class="text-xs text-neutral-500">Vanderbilt University</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+    </div><!-- end row wrapper -->
+
+    <script>
+        // ─── Chart Initializer (global scope for lazy-loader) ───────────────
+        function initializeCharts() {
+            if (typeof Chart !== 'undefined') {
+                renderSkillsChart();
+                renderExpChart();
+                renderCertsChart();
+            }
+        }
+
+        // --- Smooth Scroll + Mobile Menu ---
+        function scrollToSection(id) {
+            // Close mobile menu
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobile-overlay');
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+
+            // Smooth scroll inside the main panel
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            return false; // prevent default anchor jump
+        }
+
+        // --- Scroll-Spy: highlight sidebar link matching visible section ---
+        function updateActiveNav(id) {
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-neutral-900', 'text-white', 'border-red-500');
+                btn.classList.add('text-neutral-300', 'border-transparent');
+                if (btn.dataset.target === id) {
+                    btn.classList.add('bg-neutral-900', 'text-white', 'border-red-500');
+                    btn.classList.remove('text-neutral-300', 'border-transparent');
+                }
+            });
+        }
+
+        // --- Chart Data & Configurations ---
+
+        let skillsChartInstance = null;
+        let expChartInstance = null;
+        let certsChartInstance = null;
+
+        function renderSkillsChart() {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            if (skillsChartInstance) skillsChartInstance.destroy();
+
+            skillsChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['SEO', 'Consumer Psychology', 'AI Web Gen', 'Prompt Engineering', 'Data Analysis via AI', 'Ads Management'],
+                    datasets: [{
+                        label: 'Proficiency Level',
+                        data: [90, 85, 75, 80, 70, 65],
+                        fill: true,
+                        backgroundColor: 'rgba(220, 38, 38, 0.1)', // Orange transparent
+                        borderColor: 'rgb(220, 38, 38)',
+                        pointBackgroundColor: 'rgb(220, 38, 38)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(220, 38, 38)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            pointLabels: {
+                                font: { size: 12, weight: 'bold' },
+                                color: '#475569'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.label + ': High Competency';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderExpChart() {
+            const ctx = document.getElementById('experienceChart').getContext('2d');
+            if (expChartInstance) expChartInstance.destroy();
+
+            expChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Freelance', 'Amazon Seller', 'Aglo Bond Intern'],
+                    datasets: [{
+                        label: 'Business Impact Score',
+                        data: [75, 85, 65],
+                        backgroundColor: [
+                            'rgba(115, 115, 115, 0.7)', // Emerald
+                            'rgba(23, 23, 23, 0.9)', // Blue
+                            'rgba(220, 38, 38, 0.8)'  // Orange
+                        ],
+                        borderColor: [
+                            'rgb(115, 115, 115)',
+                            'rgb(23, 23, 23)',
+                            'rgb(220, 38, 38)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            display: false,
+                            grid: { display: false }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const msgs = [
+                                        "Audit & Optimization Success",
+                                        "Revenue & Rank Growth",
+                                        "Data & Market Insights"
+                                    ];
+                                    return msgs[context.dataIndex];
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderCertsChart() {
+            const ctx = document.getElementById('certsChart').getContext('2d');
+            if (certsChartInstance) certsChartInstance.destroy();
+
+            certsChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Google', 'Universities', 'Other Inst.'],
+                    datasets: [{
+                        data: [4, 3, 2],
+                        backgroundColor: [
+                            '#171717', // Google Blue
+                            '#dc2626', // Orange
+                            '#737373'  // Emerald
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        // --- Initialization Setup ---
+        function initializeApp() {
+            // Embed CSS styles
+            if (!document.getElementById('custom-dynamic-styles')) {
+                const style = document.createElement('style');
+                style.id = 'custom-dynamic-styles';
+                style.textContent = `
+                    html { scroll-behavior: smooth; }
+                    .skill-tag {
+                        padding: 0.25rem 0.75rem;
+                        background-color: #f1f5f9;
+                        color: #475569;
+                        border-radius: 9999px;
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                        border: 1px solid #e2e8f0;
+                        transition: all 0.2s;
+                        cursor: default;
+                    }
+                    .skill-tag:hover {
+                        background-color: #e2e8f0;
+                        transform: translateY(-1px);
+                    }
+                    .cert-item {
+                        padding: 0.75rem;
+                        border-bottom: 1px solid #f1f5f9;
+                    }
+                    .cert-item:last-child { border-bottom: none; }
+                    .view-section {
+                        opacity: 0;
+                        transform: translateY(16px);
+                        transition: opacity 0.5s ease, transform 0.5s ease;
+                    }
+                    .view-section.visible {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                    .custom-scroll::-webkit-scrollbar { width: 4px; }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // ── Scroll-spy IntersectionObserver ──────────────────────
+            const sections = document.querySelectorAll('.view-section');
+            const spy = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateActiveNav(entry.target.id);
+                        // Also sync mobile bottom nav
+                        setMobileActive(entry.target.id);
+                    }
+                });
+            }, { root: null, rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+            // ── Section fade-in observer ──────────────────────────────
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05 });
+
+            sections.forEach(sec => { spy.observe(sec); fadeObserver.observe(sec); });
+            updateActiveNav('overview');
+
+            // ── Section heading slide-in-left blur observer ───────────
+            const headingObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        headingObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            document.querySelectorAll('.anim-heading').forEach(el => headingObs.observe(el));
+
+            // ── Card zoom-blur observer (with stagger from delay attr) ─
+            const cardObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        cardObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.anim-card').forEach(el => cardObs.observe(el));
+
+            // ── Skill tag staggered pop-in observer ────────────────────
+            // Observes the skill card containers — fires tags inside with their inline delay
+            const tagContainerObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll('.skill-tag-anim').forEach(tag => {
+                            tag.classList.add('animated');
+                        });
+                        tagContainerObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.anim-card').forEach(el => {
+                if (el.querySelector('.skill-tag-anim')) tagContainerObs.observe(el);
+            });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobile-overlay');
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        // Mobile bottom nav active state sync
+        function setMobileActive(sectionId) {
+            document.querySelectorAll('.mob-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.id === 'mob-btn-' + sectionId) btn.classList.add('active');
+            });
+        }
+
+        // Lazy-load Chart.js — only load the script when charts scroll into view
+        let chartJsLoaded = false;
+        const chartSections = ['#experience', '#skills', '#education'].map(s => document.querySelector(s)).filter(Boolean);
+        const chartLoader = new IntersectionObserver((entries) => {
+            if (entries.some(e => e.isIntersecting) && !chartJsLoaded) {
+                chartJsLoaded = true;
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js';
+                script.onload = () => { initializeCharts(); };
+                document.head.appendChild(script);
+                chartLoader.disconnect();
+            }
+        }, { threshold: 0.1 });
+        chartSections.forEach(s => chartLoader.observe(s));
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            initializeApp();
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="w-full bg-black text-neutral-500 text-center py-6 text-xs border-t border-neutral-900">
+        <p>© 2025 <span class="text-white font-semibold">Aditya Singh</span> · AI-Driven Digital Marketer · Built with
+            ❤️ and AI</p>
+        <p class="mt-1">Amity University Kolkata · <a href="mailto:aditya818610@gmail.com"
+                class="text-red-400 hover:text-red-300 transition-colors">aditya818610@gmail.com</a></p>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar (visible only on mobile) -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+        <button class="mob-nav-btn active" id="mob-btn-overview"
+            onclick="scrollToSection('overview'); setMobileActive('overview')" aria-label="Executive Summary">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            Overview
+        </button>
+        <button class="mob-nav-btn" id="mob-btn-projects"
+            onclick="scrollToSection('projects'); setMobileActive('projects')" aria-label="AI Projects">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Projects
+        </button>
+        <button class="mob-nav-btn" id="mob-btn-experience"
+            onclick="scrollToSection('experience'); setMobileActive('experience')" aria-label="Experience">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Exp.
+        </button>
+        <button class="mob-nav-btn" id="mob-btn-skills" onclick="scrollToSection('skills'); setMobileActive('skills')"
+            aria-label="Skills">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+            Skills
+        </button>
+        <button class="mob-nav-btn" id="mob-btn-education"
+            onclick="scrollToSection('education'); setMobileActive('education')" aria-label="Education">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            </svg>
+            Edu.
+        </button>
+    </nav>
+</body>
+
+</html>

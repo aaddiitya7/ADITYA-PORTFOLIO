@@ -1,0 +1,19 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# macOS junk
+.DS_Store
+Thumbs.db
+
+# Temp / scratch files
+*.resolved
+mobile_upgrade.py
+
+# Generated resume (optional — comment out if you want it in the repo)
+# Resume/ADITYA_SINGH_RESUME_UPDATED.docx
+
+# Node
+node_modules/
