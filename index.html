@@ -15,6 +15,7 @@
 
     <!-- Open Graph / Social Preview -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aditya-singh-portfolio.vercel.app/">
     <meta property="og:title" content="Aditya Singh | AI-Driven Digital Marketer">
     <meta property="og:description"
         content="AI-Driven Digital Marketer with expertise in SEO, Prompt Engineering, Email Campaigns and E-Commerce. View my portfolio and projects.">
@@ -61,6 +62,36 @@
 
     <!-- Chart.js — loaded lazily via JS below -->
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ─── Back to Top Button ────────────────────────────────── */
+        #back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 767px) {
+            #back-to-top {
+                bottom: 80px;
+                /* Above the mobile nav */
+                right: 16px;
+            }
+        }
+
         /* ─── Chart Container ───────────────────────────────────── */
         .chart-container {
             position: relative;
@@ -115,13 +146,11 @@
             from {
                 opacity: 0;
                 transform: translateX(-24px);
-                filter: blur(4px);
             }
 
             to {
                 opacity: 1;
                 transform: translateX(0);
-                filter: blur(0);
             }
         }
 
@@ -145,13 +174,11 @@
             from {
                 opacity: 0;
                 transform: translateY(28px) scale(0.98);
-                filter: blur(3px);
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
-                filter: blur(0);
             }
         }
 
@@ -252,16 +279,21 @@
 
         <!-- Sidebar Navigation -->
         <aside id="mobile-sidebar"
-            class="fixed inset-y-0 left-0 transform -translate-x-full md:sticky md:top-0 md:translate-x-0 md:h-screen transition duration-300 ease-in-out w-64 bg-black text-white flex-shrink-0 flex flex-col justify-between shadow-xl z-50 md:z-20">
-            <div class="p-6">
+            class="fixed inset-y-0 left-0 transform -translate-x-full md:sticky md:top-0 md:translate-x-0 md:h-screen transition duration-300 ease-in-out w-64 bg-black text-white flex-shrink-0 flex flex-col justify-between shadow-xl z-50 md:z-20 overflow-y-auto overflow-x-hidden">
+            <div class="p-5">
                 <h1 class="text-2xl font-bold tracking-wider mb-1 text-red-400">ADITYA SINGH</h1>
-                <p class="text-xs text-neutral-400 uppercase tracking-widest mb-8">AI-Driven Marketer</p>
+                <p class="text-[10px] text-neutral-400 uppercase tracking-widest mb-4">AI-Driven Marketer</p>
 
-                <nav class="space-y-2" role="navigation" aria-label="Portfolio sections">
+                <nav class="space-y-1" role="navigation" aria-label="Portfolio sections">
                     <a href="#overview" onclick="scrollToSection('overview')"
                         class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 bg-neutral-900 text-white hover:bg-neutral-800 flex items-center gap-3 border-l-4 border-red-500"
                         data-target="overview" aria-label="Navigate to Executive Summary section">
                         <span aria-hidden="true">⚡</span> Executive Summary
+                    </a>
+                    <a href="#case-studies" onclick="scrollToSection('case-studies')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
+                        data-target="case-studies" aria-label="Navigate to Case Studies section">
+                        <span aria-hidden="true">📄</span> Case Studies
                     </a>
                     <a href="#projects" onclick="scrollToSection('projects')"
                         class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
@@ -283,16 +315,11 @@
                         data-target="education" aria-label="Navigate to Education and Certifications section">
                         <span aria-hidden="true">🎓</span> Education &amp; Certs
                     </a>
-                    <a href="#case-studies" onclick="scrollToSection('case-studies')"
-                        class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
-                        data-target="case-studies" aria-label="Navigate to Case Studies section">
-                        <span aria-hidden="true">📄</span> Case Studies
-                    </a>
 
                     <!-- Download Resume -->
-                    <a href="Resume/ADITYA_SINGH_RESUME_UPDATED.docx" download="Aditya_Singh_Resume.docx"
+                    <a href="Resume/ADITYA_SINGH_RESUME_UPDATED.pdf" target="_blank" download="Aditya_Singh_Resume.pdf"
                         class="w-full mt-2 px-4 py-2.5 rounded-lg flex items-center gap-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-500 active:scale-95 transition-all duration-200 border border-red-500"
-                        aria-label="Download Aditya Singh resume as DOCX">
+                        aria-label="Download Aditya Singh resume as PDF">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -303,23 +330,22 @@
                 </nav>
             </div>
 
-            <div class="p-6 bg-[#0a0a0a] space-y-4">
-                <div class="text-xs font-bold text-neutral-500 tracking-wider mb-4">CONTACT</div>
+            <div class="p-5 bg-[#0a0a0a] space-y-2 lg:p-6 lg:space-y-4">
+                <div class="text-[10px] font-bold text-neutral-500 tracking-wider mb-2">CONTACT</div>
 
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aditya818610@gmail.com" target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center gap-3 w-full group p-3 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800">
+                <button onclick="openContactModal()"
+                    class="flex items-center gap-2 w-full group p-2 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800 text-left">
                     <div
-                        class="flex-shrink-0 w-10 h-10 bg-neutral-900 group-hover:bg-red-500/10 rounded-full flex items-center justify-center transition-colors duration-300">
+                        class="flex-shrink-0 w-8 h-8 bg-neutral-900 group-hover:bg-red-500/10 rounded-full flex items-center justify-center transition-colors duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 text-neutral-400 group-hover:text-red-400 transition-colors"
+                            class="h-4 w-4 text-neutral-400 group-hover:text-red-400 transition-colors"
                             fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                         </svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <div class="text-[10px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">Email Me
+                        <div class="text-[9px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">Email Me
                         </div>
                         <div
                             class="text-xs font-bold text-neutral-300 group-hover:text-white transition-colors truncate">
@@ -331,21 +357,21 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
-                </a>
+                </button>
 
                 <a href="https://wa.me/918335878691" target="_blank" rel="noopener noreferrer"
-                    class="flex items-center gap-3 w-full group p-3 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800">
+                    class="flex items-center gap-2 w-full group p-2 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800">
                     <div
-                        class="flex-shrink-0 w-10 h-10 bg-neutral-900 group-hover:bg-[#25D366]/10 rounded-full flex items-center justify-center transition-colors duration-300">
+                        class="flex-shrink-0 w-8 h-8 bg-neutral-900 group-hover:bg-[#25D366]/10 rounded-full flex items-center justify-center transition-colors duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 text-neutral-400 group-hover:text-[#25D366] transition-colors"
+                            class="h-4 w-4 text-neutral-400 group-hover:text-[#25D366] transition-colors"
                             fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
                         </svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <div class="text-[10px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">WhatsApp
+                        <div class="text-[9px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">WhatsApp
                         </div>
                         <div
                             class="text-xs font-bold text-neutral-300 group-hover:text-white transition-colors truncate">
@@ -353,7 +379,7 @@
                             8335878691</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 text-neutral-600 group-hover:text-white transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100 flex-shrink-0"
+                        class="h-4 w-4 text-neutral-600 group-hover:text-white transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100 flex-shrink-0 ml-auto"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M7 17L17 7M17 7H7M17 7V17" />
@@ -361,25 +387,25 @@
                 </a>
 
                 <a href="https://www.linkedin.com/in/aditya-singh-43162136b" target="_blank" rel="noopener noreferrer"
-                    class="flex items-center gap-3 w-full group p-3 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800">
+                    class="flex items-center gap-2 w-full group p-2 rounded-lg hover:bg-[#141414] transition-all duration-300 border border-transparent hover:border-neutral-800">
                     <div
-                        class="flex-shrink-0 w-10 h-10 bg-neutral-900 group-hover:bg-[#0a66c2]/10 rounded-full flex items-center justify-center transition-colors duration-300">
+                        class="flex-shrink-0 w-8 h-8 bg-neutral-900 group-hover:bg-[#0a66c2]/10 rounded-full flex items-center justify-center transition-colors duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 text-neutral-400 group-hover:text-[#0a66c2] transition-colors"
+                            class="h-4 w-4 text-neutral-400 group-hover:text-[#0a66c2] transition-colors"
                             fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                         </svg>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <div class="text-[10px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">Connect
+                        <div class="text-[9px] text-neutral-500 uppercase tracking-widest mb-0.5 font-bold">Connect
                         </div>
                         <div
                             class="text-[14px] font-bold text-neutral-300 group-hover:text-white transition-colors truncate">
                             LinkedIn</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 text-neutral-600 group-hover:text-white transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100 flex-shrink-0"
+                        class="h-4 w-4 text-neutral-600 group-hover:text-white transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100 flex-shrink-0 ml-auto"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M7 17L17 7M17 7H7M17 7V17" />
@@ -451,8 +477,9 @@
 
                             <!-- CTA Row -->
                             <div class="flex flex-wrap gap-3">
-                                <a href="Resume/ADITYA_SINGH_RESUME_UPDATED.docx" download="Aditya_Singh_Resume.docx"
-                                    class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded-lg transition-all duration-200 active:scale-95 shadow-lg shadow-red-900/40"
+                                <a href="Resume/ADITYA_SINGH_RESUME_UPDATED.pdf" target="_blank"
+                                    download="Aditya_Singh_Resume.pdf"
+                                    class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-white text-sm font-bold rounded-lg transition-all duration-200 active:scale-95"
                                     aria-label="Download Aditya Singh resume">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -473,12 +500,16 @@
                                 <a href="#case-studies" onclick="scrollToSection('case-studies'); return false;"
                                     class="inline-flex items-center gap-2 px-6 py-3 bg-red-700/40 hover:bg-red-700/70 border border-red-500/50 text-red-300 hover:text-white text-sm font-semibold rounded-lg transition-all duration-200 backdrop-blur">
                                     📄 Case Study
+                                </a>
+                                <button onclick="openContactModal()"
+                                    class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded-lg transition-all duration-200 active:scale-95 shadow-lg shadow-red-900/40">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
-                                </a>
+                                    Contact Me
+                                </button>
                             </div>
 
                             <!-- Skill pills row -->
@@ -603,6 +634,473 @@
                     </div>
                 </section>
 
+
+                <!-- VIEW: CASE STUDIES -->
+                <section id="case-studies" class="view-section scroll-mt-20">
+                    <header class="mb-8">
+                        <h2 class="anim-heading text-3xl font-bold text-neutral-800 mb-2">Case Studies</h2>
+                        <p class="text-neutral-500 text-sm">
+                            Real-world problems diagnosed and solved — click any case study to expand full details.
+                        </p>
+                    </header>
+
+                    <!-- ─── Case Study List ─────────────────────────────── -->
+                    <div class="space-y-3" id="cs-list">
+
+                        <!-- ══ CASE STUDY #1: GA4 ══ -->
+                        <div class="cs-accordion anim-card bg-white rounded-2xl border border-neutral-150 shadow-sm overflow-hidden"
+                            style="animation-delay:60ms" data-cs="cs-ga4">
+
+                            <!-- ── Collapsed Header (always visible) ──────── -->
+                            <button
+                                class="cs-trigger w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 rounded-2xl"
+                                onclick="toggleCS('cs-ga4', this)" aria-expanded="false" aria-controls="cs-ga4-body">
+                                <div class="flex items-start gap-4 p-5 md:p-6">
+
+                                    <!-- Left: dark icon tile -->
+                                    <div class="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center text-xl"
+                                        style="background: linear-gradient(135deg,#1a0000,#3b0000);">
+                                        📊
+                                    </div>
+
+                                    <!-- Center: meta -->
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2 mb-1">
+                                            <span
+                                                class="inline-flex items-center gap-1.5 text-xs font-bold text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full">
+                                                <span
+                                                    class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>Resolved
+                                            </span>
+                                            <span class="text-xs text-neutral-400">March 2026</span>
+                                        </div>
+                                        <div class="font-bold text-neutral-900 text-sm md:text-base leading-tight mb-1">
+                                            Diagnosing &amp; Fixing a Silent GA4 Analytics Failure
+                                        </div>
+                                        <div class="text-xs text-neutral-500 mb-3">
+                                            Client: <span class="font-semibold text-neutral-600">A.S. Enterpriis</span>
+                                            — Leather Garments &amp; Safety Equipment
+                                        </div>
+
+                                        <!-- KPI chips -->
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="inline-flex items-center gap-1 px-2.5 py-1 bg-neutral-100 text-neutral-700 rounded-lg text-xs font-semibold">
+                                                <span class="text-neutral-400">⏳</span> 7 days lost
+                                            </span>
+                                            <span
+                                                class="inline-flex items-center gap-1 px-2.5 py-1 bg-red-50 text-red-700 rounded-lg text-xs font-semibold border border-red-100">
+                                                <span>🔴</span> 404 root cause
+                                            </span>
+                                            <span
+                                                class="inline-flex items-center gap-1 px-2.5 py-1 bg-green-50 text-green-700 rounded-lg text-xs font-semibold border border-green-100">
+                                                <span>✅</span> Fixed in &lt;2h
+                                            </span>
+                                            <span
+                                                class="inline-flex items-center gap-1 px-2.5 py-1 bg-neutral-100 text-neutral-700 rounded-lg text-xs font-semibold">
+                                                <span>🛠️</span> GA4 · DevTools
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right: chevron -->
+                                    <div
+                                        class="flex-shrink-0 cs-chevron w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center transition-transform duration-300 mt-0.5">
+                                        <svg class="w-4 h-4 text-neutral-500" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- ── Expanded Body ────────────────────────────── -->
+                            <div id="cs-ga4-body" class="cs-body"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);">
+                                <div class="cs-inner px-5 md:px-10 pb-10 space-y-10 border-t border-neutral-100">
+
+                                    <!-- Dark banner -->
+                                    <div class="relative overflow-hidden rounded-xl -mx-0 mt-6"
+                                        style="background:linear-gradient(135deg,#0a0a0a 0%,#1a0000 50%,#0a0a0a 100%);">
+                                        <div class="absolute inset-0 opacity-10"
+                                            style="background-image:linear-gradient(#dc2626 1px,transparent 1px),linear-gradient(90deg,#dc2626 1px,transparent 1px);background-size:40px 40px;">
+                                        </div>
+                                        <div class="absolute top-0 right-0 w-48 h-48 rounded-full opacity-20"
+                                            style="background:radial-gradient(circle,#dc2626 0%,transparent 70%);transform:translate(30%,-30%);">
+                                        </div>
+                                        <div class="relative z-10 p-6">
+                                            <h3 class="text-xl md:text-2xl font-black text-white leading-tight mb-1">
+                                                Diagnosing &amp; Fixing a Silent<br><span class="text-red-400">Google
+                                                    Analytics 4 Failure</span>
+                                            </h3>
+                                            <p class="text-neutral-400 text-xs">
+                                                A.S. Enterpriis &nbsp;·&nbsp;
+                                                <a href="https://www.asenterpriis.com" target="_blank"
+                                                    class="text-red-400 hover:text-red-300 transition-colors">asenterpriis.com
+                                                    ↗</a>
+                                                &nbsp;·&nbsp; Aditya Singh &nbsp;·&nbsp; aditya818610@gmail.com
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- At a Glance KPIs -->
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
+                                            <div class="text-2xl font-black text-neutral-900">7</div>
+                                            <div
+                                                class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">
+                                                Days Lost</div>
+                                        </div>
+                                        <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
+                                            <div class="text-2xl font-black text-red-500">&lt;2h</div>
+                                            <div
+                                                class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">
+                                                Time to Fix</div>
+                                        </div>
+                                        <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
+                                            <div class="text-2xl font-black text-neutral-900">404</div>
+                                            <div
+                                                class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">
+                                                Root Cause (HTTP)</div>
+                                        </div>
+                                        <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
+                                            <div class="text-2xl font-black text-green-600">✅</div>
+                                            <div
+                                                class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">
+                                                Fully Restored</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- The Challenge -->
+                                    <div>
+                                        <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-3">The
+                                            Challenge</h4>
+                                        <div class="bg-neutral-950 rounded-xl p-6 border border-neutral-800">
+                                            <p class="text-neutral-300 text-sm leading-relaxed mb-4">After launching the
+                                                A.S. Enterpriis website, GA4 was configured and deployed — property
+                                                created, Measurement ID embedded, site live on Vercel. <strong
+                                                    class="text-white">But after 7 days, the GA4 dashboard showed
+                                                    absolutely zero data.</strong></p>
+                                            <p class="text-neutral-400 text-sm leading-relaxed">No users. No sessions.
+                                                No page views. The "Data collection isn't active" warning persisted even
+                                                when visiting the site from multiple devices and networks.</p>
+                                        </div>
+                                        <div
+                                            class="mt-4 rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+                                            <div
+                                                class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
+                                                📸 GA4 Dashboard — Zero Data Warning</div>
+                                            <img src="case-study/assets/ga4-no-data-received.webp"
+                                                alt="GA4 dashboard showing no data received" class="w-full object-cover"
+                                                loading="lazy">
+                                        </div>
+                                    </div>
+
+                                    <!-- The Investigation -->
+                                    <div>
+                                        <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">The
+                                            Investigation</h4>
+                                        <div class="space-y-4">
+                                            <div
+                                                class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                                                <div
+                                                    class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-black">
+                                                    1</div>
+                                                <div>
+                                                    <div class="font-bold text-neutral-800 text-sm mb-1">Surface-Level
+                                                        Config Check</div>
+                                                    <p class="text-neutral-500 text-xs leading-relaxed">Verified the
+                                                        Measurement ID was present in code, matched the GA4 dashboard,
+                                                        the website URL was correct, deployment was live, and Enhanced
+                                                        Measurement was on. <strong class="text-neutral-700">Everything
+                                                            looked perfect on paper — the classic trap.</strong></p>
+                                                </div>
+                                            </div>
+                                            <div class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
+                                                style="border-left:3px solid #dc2626;">
+                                                <div
+                                                    class="flex-shrink-0 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-xs font-black">
+                                                    2</div>
+                                                <div>
+                                                    <div class="font-bold text-neutral-800 text-sm mb-1">Network-Level
+                                                        Debugging — The Smoking Gun</div>
+                                                    <p class="text-neutral-500 text-xs leading-relaxed mb-3">Opened
+                                                        browser DevTools and inspected network requests. The <code
+                                                            class="bg-neutral-100 px-1.5 py-0.5 rounded text-red-600 font-mono text-xs">gtag/js</code>
+                                                        script returned a <strong class="text-red-600">404 Not
+                                                            Found</strong> — Google's servers didn't recognise the
+                                                        Measurement ID.</p>
+                                                    <div class="grid grid-cols-3 gap-2 text-xs">
+                                                        <div
+                                                            class="bg-neutral-50 rounded-lg p-2 border border-neutral-100 text-center">
+                                                            <div class="font-mono font-bold text-neutral-700">Request
+                                                            </div>
+                                                            <div class="text-neutral-500 mt-1 text-xs">
+                                                                gtag/js?id=G-4JGJ...</div>
+                                                        </div>
+                                                        <div
+                                                            class="bg-neutral-50 rounded-lg p-2 border border-neutral-100 text-center">
+                                                            <div class="font-mono font-bold text-green-600">Expected
+                                                            </div>
+                                                            <div class="text-neutral-500 mt-1">200 OK (JS)</div>
+                                                        </div>
+                                                        <div
+                                                            class="bg-red-50 rounded-lg p-2 border border-red-100 text-center">
+                                                            <div class="font-mono font-bold text-red-600">Actual</div>
+                                                            <div class="text-neutral-500 mt-1">404 Not Found</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                                                <div
+                                                    class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-black">
+                                                    3</div>
+                                                <div>
+                                                    <div class="font-bold text-neutral-800 text-sm mb-1">Root Cause
+                                                        Analysis</div>
+                                                    <p class="text-neutral-500 text-xs leading-relaxed">The GA4 property
+                                                        had been migrated between Google accounts. The Data Stream's
+                                                        Measurement ID became <strong
+                                                            class="text-neutral-700">orphaned</strong> — visible in the
+                                                        admin UI but not recognised by Google's tag-serving
+                                                        infrastructure. A rare post-migration edge case.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- The Solution -->
+                                    <div>
+                                        <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">The
+                                            Solution</h4>
+                                        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                                            <div
+                                                class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
+                                                <div class="text-2xl mb-2">🗑️</div>
+                                                <div class="text-xs font-bold text-neutral-700 mb-1">Delete Broken
+                                                    Stream</div>
+                                                <div class="text-xs text-neutral-400">Removed orphaned ID from GA4</div>
+                                            </div>
+                                            <div
+                                                class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
+                                                <div class="text-2xl mb-2">➕</div>
+                                                <div class="text-xs font-bold text-neutral-700 mb-1">Fresh Data Stream
+                                                </div>
+                                                <div class="text-xs text-neutral-400">New Web stream, correct URL</div>
+                                            </div>
+                                            <div
+                                                class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
+                                                <div class="text-2xl mb-2">✅</div>
+                                                <div class="text-xs font-bold text-neutral-700 mb-1">Verify New ID</div>
+                                                <div class="text-xs text-neutral-400">Confirmed 200 OK from Google</div>
+                                            </div>
+                                            <div
+                                                class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
+                                                <div class="text-2xl mb-2">🚀</div>
+                                                <div class="text-xs font-bold text-neutral-700 mb-1">Update &amp; Deploy
+                                                </div>
+                                                <div class="text-xs text-neutral-400">GitHub → Vercel CI/CD, 60s</div>
+                                            </div>
+                                            <div
+                                                class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm col-span-2 md:col-span-1">
+                                                <div class="text-2xl mb-2">📊</div>
+                                                <div class="text-xs font-bold text-neutral-700 mb-1">Confirm Collection
+                                                </div>
+                                                <div class="text-xs text-neutral-400">Realtime: 1 active user</div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="mt-4 rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+                                            <div
+                                                class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
+                                                📸 GA4 Realtime — Active User Confirmed ✅</div>
+                                            <img src="case-study/assets/ga4-realtime-success.webp"
+                                                alt="GA4 Realtime showing 1 active user" class="w-full object-cover"
+                                                loading="lazy">
+                                        </div>
+                                    </div>
+
+                                    <!-- Results Table -->
+                                    <div>
+                                        <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">
+                                            Results</h4>
+                                        <div class="overflow-x-auto rounded-xl border border-neutral-100 shadow-sm">
+                                            <table class="w-full text-sm">
+                                                <thead>
+                                                    <tr class="bg-neutral-900 text-white">
+                                                        <th
+                                                            class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider">
+                                                            Metric</th>
+                                                        <th
+                                                            class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider">
+                                                            Before</th>
+                                                        <th
+                                                            class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider text-green-400">
+                                                            After</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="divide-y divide-neutral-100 bg-white">
+                                                    <tr class="hover:bg-neutral-50 transition-colors">
+                                                        <td class="px-5 py-3 font-semibold text-neutral-700">Data
+                                                            Collection Status</td>
+                                                        <td class="px-5 py-3 text-red-500 font-mono text-xs">❌ Inactive
+                                                        </td>
+                                                        <td class="px-5 py-3 text-green-600 font-mono text-xs">✅ Active
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="hover:bg-neutral-50 transition-colors">
+                                                        <td class="px-5 py-3 font-semibold text-neutral-700">Realtime
+                                                            Users Visible</td>
+                                                        <td class="px-5 py-3 text-neutral-400 font-mono text-xs">0</td>
+                                                        <td class="px-5 py-3 text-green-600 font-mono text-xs">1+
+                                                            (immediate)</td>
+                                                    </tr>
+                                                    <tr class="hover:bg-neutral-50 transition-colors">
+                                                        <td class="px-5 py-3 font-semibold text-neutral-700">Events
+                                                            Captured</td>
+                                                        <td class="px-5 py-3 text-neutral-400 font-mono text-xs">None
+                                                        </td>
+                                                        <td class="px-5 py-3 text-green-600 font-mono text-xs">Page
+                                                            views, Scrolls, Clicks</td>
+                                                    </tr>
+                                                    <tr class="hover:bg-neutral-50 transition-colors">
+                                                        <td class="px-5 py-3 font-semibold text-neutral-700">Time to
+                                                            Resolution</td>
+                                                        <td class="px-5 py-3 text-neutral-400 font-mono text-xs">—</td>
+                                                        <td class="px-5 py-3 text-green-600 font-mono text-xs">&lt; 2
+                                                            hours</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Key Takeaways -->
+                                    <div>
+                                        <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Key
+                                            Takeaways</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div
+                                                class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
+                                                <span class="text-lg flex-shrink-0">🔍</span>
+                                                <div>
+                                                    <div class="font-bold text-neutral-800 text-sm mb-1">"Configured" ≠
+                                                        "Working"</div>
+                                                    <p class="text-neutral-500 text-xs leading-relaxed">All visible
+                                                        config was correct. The failure was only detectable at the
+                                                        network level — a gap most marketers never check.</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
+                                                <span class="text-lg flex-shrink-0">🌐</span>
+                                                <div>
+                                                    <div class="font-bold text-neutral-800 text-sm mb-1">Always Verify
+                                                        at Network Level</div>
+                                                    <p class="text-neutral-500 text-xs leading-relaxed">Checking whether
+                                                        <code
+                                                            class="bg-neutral-200 px-1 rounded font-mono text-xs">gtag.js?id=YOUR_ID</code>
+                                                        returns 200 vs 404 is the single fastest diagnostic step.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
+                                                <span class="text-lg flex-shrink-0">⚠️</span>
+                                                <div>
+                                                    <div class="font-bold text-neutral-800 text-sm mb-1">Account
+                                                        Migrations Break Streams</div>
+                                                    <p class="text-neutral-500 text-xs leading-relaxed">Moving a GA4
+                                                        property between accounts can silently orphan data streams.
+                                                        Always re-verify after migration.</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
+                                                <span class="text-lg flex-shrink-0">📊</span>
+                                                <div>
+                                                    <div class="font-bold text-neutral-800 text-sm mb-1">Realtime
+                                                        Reports = Instant Feedback</div>
+                                                    <p class="text-neutral-500 text-xs leading-relaxed">GA4 Realtime is
+                                                        the fastest verification tool — you'll see data within seconds
+                                                        if tracking is live.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Infographic -->
+                                    <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+                                        <div
+                                            class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
+                                            📊 Case Study Infographic — Full Process Summary</div>
+                                        <img src="case-study/assets/ga4-case-study-infographic.webp"
+                                            alt="GA4 case study process infographic" class="w-full object-cover"
+                                            loading="lazy">
+                                    </div>
+
+                                    <!-- Skills Tags -->
+                                    <div class="border-t border-neutral-100 pt-6">
+                                        <div class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-3">
+                                            Tools &amp; Skills Demonstrated</div>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Google
+                                                Analytics 4</span>
+                                            <span
+                                                class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Web
+                                                Analytics Debugging</span>
+                                            <span
+                                                class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Network
+                                                Inspection</span>
+                                            <span
+                                                class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">HTTP
+                                                Status Verification</span>
+                                            <span
+                                                class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">CI/CD
+                                                Deployment</span>
+                                            <span
+                                                class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">AI-Assisted
+                                                Diagnosis</span>
+                                            <span
+                                                class="px-3 py-1.5 bg-red-900/60 text-red-300 rounded-full text-xs font-medium border border-red-800">Resolved
+                                                in &lt; 2 hours</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Collapse button -->
+                                    <div class="flex justify-center pt-2">
+                                        <button
+                                            onclick="toggleCS('cs-ga4', document.querySelector('[data-cs=cs-ga4] .cs-trigger'))"
+                                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 text-xs font-semibold transition-colors">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                stroke-width="2.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M5 15l7-7 7 7" />
+                                            </svg>
+                                            Collapse case study
+                                        </button>
+                                    </div>
+
+                                </div><!-- /cs-inner -->
+                            </div><!-- /cs-body -->
+                        </div><!-- /cs-accordion -->
+
+                        <!-- ── Add more case studies above this comment ─────── -->
+                        <!-- TEMPLATE (duplicate this block for new case studies):
+                        <div class="cs-accordion anim-card bg-white rounded-2xl border border-neutral-150 shadow-sm overflow-hidden" data-cs="cs-SLUG">
+                            <button class="cs-trigger w-full text-left ..." onclick="toggleCS('cs-SLUG', this)" aria-expanded="false" aria-controls="cs-SLUG-body">
+                                ... header content ...
+                            </button>
+                            <div id="cs-SLUG-body" class="cs-body" style="max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);">
+                                ... full detail content ...
+                            </div>
+                        </div>
+                        -->
+
+                    </div><!-- /cs-list -->
+                </section>
                 <!-- VIEW: PROJECTS -->
                 <section id="projects" class="view-section scroll-mt-20">
                     <header class="mb-8">
@@ -616,100 +1114,148 @@
                         </p>
                     </header>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="space-y-3" id="ai-list">
                         <!-- Project 1 -->
-                        <div class="anim-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-neutral-100 flex flex-col h-full"
-                            style="animation-delay:100ms">
-                            <div class="h-2 bg-red-500 w-full"></div>
-                            <div class="p-6 flex-1 flex flex-col">
-                                <div class="flex justify-between items-start mb-4">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-neutral-900">A.S. Enterprise B2B Website</h3>
-                                        <span
-                                            class="inline-block bg-red-50 text-red-700 text-xs px-2 py-1 rounded mt-1">Live
-                                            Deployment</span>
+                        <div class="cs-accordion anim-card bg-white rounded-2xl border border-neutral-150 shadow-sm overflow-hidden"
+                            data-cs="ai-proj-1">
+                            <button
+                                class="cs-trigger w-full text-left p-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 group focus:outline-none"
+                                onclick="toggleCS('ai-proj-1', this)" aria-expanded="false"
+                                aria-controls="ai-proj-1-body">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center shadow-inner overflow-hidden shrink-0">
+                                            <span class="text-xl">🌍</span>
+                                        </div>
+                                        <div>
+                                            <span
+                                                class="inline-block bg-red-50 text-red-700 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wide uppercase border border-red-100 mb-1">Live
+                                                Deployment</span>
+                                            <h3
+                                                class="text-lg font-bold text-neutral-900 leading-tight group-hover:text-red-700 transition-colors">
+                                                A.S. Enterprise B2B Website</h3>
+                                        </div>
                                     </div>
-                                    <span class="text-2xl">🌍</span>
+                                    <p class="text-neutral-500 text-sm mt-2 line-clamp-1 pr-8"><strong>The Marketing
+                                            Goal:</strong> Build a high-converting digital storefront to capture
+                                        qualified B2B wholesale inquiries for an export business.</p>
                                 </div>
-                                <div class="text-neutral-600 text-sm mb-6 flex-grow space-y-3">
-                                    <p><strong>The Marketing Goal:</strong> Build a high-converting digital storefront
-                                        to
-                                        capture qualified B2B wholesale inquiries for an export business.</p>
-                                    <p><strong>The Execution:</strong> Instead of waiting weeks for an agency, I
-                                        utilized AI
-                                        web generation to rapidly deploy a responsive, SEO-optimized site with a
-                                        seamless
-                                        lead capture system integrated directly into a CRM workflow.</p>
+                                <div
+                                    class="mt-2 sm:mt-0 opacity-40 group-hover:opacity-100 transition-opacity shrink-0">
+                                    <svg class="cs-chevron w-6 h-6 transform transition-transform duration-300"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
                                 </div>
-
-                                <div class="mb-6">
-                                    <h4 class="text-xs font-bold text-neutral-400 uppercase tracking-wide mb-2">Tech &
-                                        Skills
-                                    </h4>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Web
-                                            Development</span>
-                                        <span
-                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">UX
-                                            Design</span>
-                                        <span
-                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Lead
-                                            Gen</span>
-                                        <span
-                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Vercel</span>
+                            </button>
+                            <div id="ai-proj-1-body" class="cs-body"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);">
+                                <div class="cs-inner p-6 pt-0 border-t border-neutral-100">
+                                    <div class="mt-4 text-neutral-600 text-sm mb-6 flex-grow space-y-3">
+                                        <p><strong>The Execution:</strong> Instead of waiting weeks for an agency, I
+                                            utilized AI web generation to rapidly deploy a responsive, SEO-optimized
+                                            site with a seamless lead capture system integrated directly into a CRM
+                                            workflow.</p>
                                     </div>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-bold text-neutral-400 uppercase tracking-wide mb-2">Tech
+                                            & Skills</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Web
+                                                Development</span>
+                                            <span
+                                                class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">UX
+                                                Design</span>
+                                            <span
+                                                class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Lead
+                                                Gen</span>
+                                            <span
+                                                class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Vercel</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://as-enterprise-coral.vercel.app/#inquiry" target="_blank"
+                                        class="w-full text-center bg-black text-white py-3 rounded-lg hover:bg-neutral-800 transition-all duration-200 active:scale-95 font-medium flex items-center justify-center gap-2">
+                                        Visit Live Site <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                            </path>
+                                        </svg>
+                                    </a>
                                 </div>
-
-                                <a href="https://as-enterprise-coral.vercel.app/#inquiry" target="_blank"
-                                    class="w-full text-center bg-black text-white py-3 rounded-lg hover:bg-red-600 transition-all duration-200 active:scale-95 font-medium">
-                                    Visit Live Site ↗
-                                </a>
                             </div>
                         </div>
 
                         <!-- Project 2 -->
-                        <div
-                            class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-neutral-100 flex flex-col h-full">
-                            <div class="h-2 bg-neutral-1000 w-full"></div>
-                            <div class="p-6 flex-1 flex flex-col">
-                                <div class="flex justify-between items-start mb-4">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-neutral-900">Forge Web Application</h3>
-                                        <span
-                                            class="inline-block bg-red-50 text-red-700 text-xs px-2 py-1 rounded mt-1">Live
-                                            Deployment</span>
+                        <div class="cs-accordion anim-card bg-white rounded-2xl border border-neutral-150 shadow-sm overflow-hidden"
+                            data-cs="ai-proj-2" style="animation-delay:100ms">
+                            <button
+                                class="cs-trigger w-full text-left p-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 group focus:outline-none"
+                                onclick="toggleCS('ai-proj-2', this)" aria-expanded="false"
+                                aria-controls="ai-proj-2-body">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center shadow-inner overflow-hidden shrink-0">
+                                            <span class="text-xl">⚙️</span>
+                                        </div>
+                                        <div>
+                                            <span
+                                                class="inline-block bg-red-50 text-red-700 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wide uppercase border border-red-100 mb-1">Live
+                                                Deployment</span>
+                                            <h3
+                                                class="text-lg font-bold text-neutral-900 leading-tight group-hover:text-red-700 transition-colors">
+                                                Forge Web Application</h3>
+                                        </div>
                                     </div>
-                                    <span class="text-2xl">⚙️</span>
+                                    <p class="text-neutral-500 text-sm mt-2 line-clamp-1 pr-8"><strong>The Marketing
+                                            Goal:</strong> Create an interactive, value-driven web application to serve
+                                        as a powerful lead magnet and engagement tool.</p>
                                 </div>
-                                <div class="text-neutral-600 text-sm mb-6 flex-grow space-y-3">
-                                    <p><strong>The Marketing Goal:</strong> Create an interactive, value-driven web
-                                        application to serve as a powerful lead magnet and engagement tool.</p>
-                                    <p><strong>The Execution:</strong> Mastered prompt engineering to instruct AI code
-                                        models to build a complex Progressive Web App (PWA) from scratch, turning a
-                                        strategic concept into a live product in record time.</p>
+                                <div
+                                    class="mt-2 sm:mt-0 opacity-40 group-hover:opacity-100 transition-opacity shrink-0">
+                                    <svg class="cs-chevron w-6 h-6 transform transition-transform duration-300"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
                                 </div>
-
-                                <div class="mb-6">
-                                    <h4 class="text-xs font-bold text-neutral-400 uppercase tracking-wide mb-2">Tech &
-                                        Skills
-                                    </h4>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">AI
-                                            Integration</span>
-                                        <span
-                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Prompt
-                                            Engineering</span>
-                                        <span
-                                            class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">PWA</span>
+                            </button>
+                            <div id="ai-proj-2-body" class="cs-body"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);">
+                                <div class="cs-inner p-6 pt-0 border-t border-neutral-100">
+                                    <div class="mt-4 text-neutral-600 text-sm mb-6 flex-grow space-y-3">
+                                        <p><strong>The Execution:</strong> Mastered prompt engineering to instruct AI
+                                            code models to build a complex Progressive Web App (PWA) from scratch,
+                                            turning a strategic concept into a live product in record time.</p>
                                     </div>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-bold text-neutral-400 uppercase tracking-wide mb-2">Tech
+                                            & Skills</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">AI
+                                                Integration</span>
+                                            <span
+                                                class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">Prompt
+                                                Engineering</span>
+                                            <span
+                                                class="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200">PWA</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://forge-by-aditya.web.app/?source=pwa" target="_blank"
+                                        class="w-full text-center bg-black text-white py-3 rounded-lg hover:bg-neutral-800 transition-all duration-200 active:scale-95 font-medium flex items-center justify-center gap-2">
+                                        Launch App <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                            </path>
+                                        </svg>
+                                    </a>
                                 </div>
-
-                                <a href="https://forge-by-aditya.web.app/?source=pwa" target="_blank"
-                                    class="w-full text-center bg-black text-white py-3 rounded-lg hover:bg-neutral-800 transition-all duration-200 active:scale-95 font-medium">
-                                    Launch App ↗
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -739,131 +1285,188 @@
                     </div>
 
                     <!-- Compact Job Cards -->
-                    <div class="space-y-4">
-
+                    <div class="space-y-3" id="exp-list">
                         <!-- Job 1: Aglo Bond -->
-                        <div
-                            class="bg-white rounded-xl border border-neutral-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
-                            <div class="flex flex-col md:flex-row">
-                                <!-- Left: Role Info -->
-                                <div
-                                    class="md:w-56 flex-shrink-0 bg-neutral-50 border-r border-neutral-100 p-5 flex flex-col justify-center">
-                                    <div class="flex items-center gap-2 mb-1">
-                                        <span class="w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></span>
-                                        <h3 class="font-bold text-neutral-800 text-sm">Aglo Bond Pvt Ltd.</h3>
+                        <div class="cs-accordion anim-card bg-white rounded-2xl border border-neutral-150 shadow-sm overflow-hidden"
+                            data-cs="exp-1" style="animation-delay:100ms">
+                            <button
+                                class="cs-trigger w-full text-left p-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 group focus:outline-none"
+                                onclick="toggleCS('exp-1', this)" aria-expanded="false" aria-controls="exp-1-body">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center shadow-inner overflow-hidden shrink-0">
+                                            <span class="text-xl">💼</span>
+                                        </div>
+                                        <div>
+                                            <span
+                                                class="inline-block bg-neutral-100 text-neutral-600 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wide uppercase border border-neutral-200 mb-1">Jun
+                                                '25 – Aug '25</span>
+                                            <h3
+                                                class="text-lg font-bold text-neutral-900 leading-tight group-hover:text-red-700 transition-colors">
+                                                Digital Marketing & Market Research Intern</h3>
+                                        </div>
                                     </div>
-                                    <div class="text-xs font-semibold text-red-600 mb-2 pl-4">Digital Marketing & Market
-                                        Research Intern</div>
-                                    <span
-                                        class="text-xs font-mono text-neutral-400 bg-white border border-neutral-200 px-2 py-0.5 rounded w-fit ml-4">Jun
-                                        '25 – Aug '25</span>
+                                    <p class="text-neutral-500 text-sm mt-2 line-clamp-1 pr-8"><strong>Aglo Bond Pvt
+                                            Ltd.</strong> — Conducted market research, quantitative analysis, and
+                                        executed local outreach strategies.</p>
                                 </div>
-                                <!-- Right: Bullets in 2-col grid -->
-                                <div class="flex-1 p-5">
+                                <div
+                                    class="mt-2 sm:mt-0 opacity-40 group-hover:opacity-100 transition-opacity shrink-0">
+                                    <svg class="cs-chevron w-6 h-6 transform transition-transform duration-300"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div id="exp-1-body" class="cs-body"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);">
+                                <div class="cs-inner p-6 pt-0 border-t border-neutral-100">
                                     <ul
-                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-600">
+                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-neutral-600 mt-4">
                                         <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Conducted
-                                            quantitative & qualitative market research (surveys, distributor interviews)
-                                            to
-                                            segment markets.</li>
+                                            quantitative &amp; qualitative market research (surveys, distributor
+                                            interviews) to segment <strong class="text-neutral-800">3+ target
+                                                markets</strong>.</li>
                                         <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Used Google
-                                            Trends
-                                            & Search Console to identify seasonal demand for FMCG categories.</li>
+                                            Trends &amp; Search Console to identify seasonal demand; surfaced <strong
+                                                class="text-neutral-800">high-intent keywords</strong> for FMCG
+                                            categories.</li>
                                         <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Compiled and
-                                            cleaned data for lead generation and email campaigns using Excel and Zapier.
+                                            cleaned data for lead generation, building a contact list of <strong
+                                                class="text-neutral-800">200+ prospects</strong> via Excel and Zapier.
                                         </li>
                                         <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Supported email
-                                            &
-                                            WhatsApp outreach campaigns, ensuring brand consistency.</li>
+                                            &amp; WhatsApp outreach campaigns achieving <strong
+                                                class="text-neutral-800">consistent brand messaging</strong> across all
+                                            channels.</li>
                                         <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Performed
-                                            keyword
-                                            research and supported Google Ads setup; monitored basic KPIs for reporting.
-                                        </li>
+                                            keyword research and supported Google Ads setup; monitored KPIs weekly for
+                                            stakeholder reporting.</li>
                                         <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Created Excel
-                                            dashboards and PowerPoint decks for data storytelling and stakeholder
-                                            presentations.</li>
+                                            dashboards &amp; PowerPoint decks for data storytelling, reducing reporting
+                                            time by <strong class="text-neutral-800">~40%</strong>.</li>
                                         <li class="flex gap-2 sm:col-span-2"><span
-                                                class="text-red-400 mt-0.5">›</span>Utilized AI tools (ChatGPT, Canva
-                                            AI)
-                                            for research summaries, content creation, and visual design.</li>
+                                                class="text-red-400 mt-0.5">›</span>Leveraged ChatGPT &amp; Canva AI to
+                                            produce research summaries and visuals, cutting content creation time
+                                            <strong class="text-neutral-800">in half</strong>.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Job 2: Amazon India -->
-                        <div
-                            class="bg-white rounded-xl border border-neutral-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
-                            <div class="flex flex-col md:flex-row">
-                                <div
-                                    class="md:w-56 flex-shrink-0 bg-neutral-50 border-r border-neutral-100 p-5 flex flex-col justify-center">
-                                    <div class="flex items-center gap-2 mb-1">
-                                        <span class="w-2 h-2 rounded-full bg-neutral-900 flex-shrink-0"></span>
-                                        <h3 class="font-bold text-neutral-800 text-sm">Amazon India</h3>
+                        <div class="cs-accordion anim-card bg-white rounded-2xl border border-neutral-150 shadow-sm overflow-hidden"
+                            data-cs="exp-2" style="animation-delay:200ms">
+                            <button
+                                class="cs-trigger w-full text-left p-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 group focus:outline-none"
+                                onclick="toggleCS('exp-2', this)" aria-expanded="false" aria-controls="exp-2-body">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center shadow-inner overflow-hidden shrink-0">
+                                            <span class="text-xl">📦</span>
+                                        </div>
+                                        <div>
+                                            <span
+                                                class="inline-block bg-neutral-100 text-neutral-600 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wide uppercase border border-neutral-200 mb-1">Dec
+                                                '24 – May '25</span>
+                                            <h3
+                                                class="text-lg font-bold text-neutral-900 leading-tight group-hover:text-red-700 transition-colors">
+                                                E-commerce Seller</h3>
+                                        </div>
                                     </div>
-                                    <div class="text-xs font-semibold text-neutral-700 mb-0.5 pl-4">E-commerce Seller
-                                    </div>
-                                    <div class="text-xs text-neutral-400 pl-4 mb-2">ID: A35RU6FGL0700V</div>
-                                    <span
-                                        class="text-xs font-mono text-neutral-400 bg-white border border-neutral-200 px-2 py-0.5 rounded w-fit ml-4">Dec
-                                        '24 – May '25</span>
+                                    <p class="text-neutral-500 text-sm mt-2 line-clamp-1 pr-8"><strong>Amazon
+                                            India</strong> — ID: A35RU6FGL0700V. Managed local storefront and order
+                                        fulfillment.</p>
                                 </div>
-                                <div class="flex-1 p-5">
+                                <div
+                                    class="mt-2 sm:mt-0 opacity-40 group-hover:opacity-100 transition-opacity shrink-0">
+                                    <svg class="cs-chevron w-6 h-6 transform transition-transform duration-300"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div id="exp-2-body" class="cs-body"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);">
+                                <div class="cs-inner p-6 pt-0 border-t border-neutral-100">
                                     <ul
-                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-600">
-                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Managed
-                                            Amazon
+                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-neutral-600 mt-4">
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Managed Amazon
                                             India storefront, overseeing product listings, order fulfillment, and
-                                            customer
-                                            service.</li>
-                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Conducted
-                                            keyword research and implemented SEO strategies to improve product
-                                            visibility
-                                            and search ranking.</li>
-                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Analyzed
-                                            sales
-                                            trends and customer feedback to optimize product offerings and enhance
-                                            satisfaction.</li>
-                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Utilized
-                                            data
-                                            insights to drive revenue growth and increase popularity rank across
-                                            multiple
-                                            categories.</li>
+                                            customer service end-to-end.</li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Conducted
+                                            keyword research and implemented SEO strategies; achieved <strong
+                                                class="text-neutral-800">Top 5 bestseller rank</strong> in category.
+                                        </li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Analyzed sales
+                                            trends and customer feedback, increasing average review rating to <strong
+                                                class="text-neutral-800">4.6/5</strong> through product improvements.
+                                        </li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Used data
+                                            insights to drive revenue growth, achieving <strong
+                                                class="text-neutral-800">consistent month-on-month sales uplift</strong>
+                                            across multiple categories.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Job 3: Freelance -->
-                        <div
-                            class="bg-white rounded-xl border border-neutral-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
-                            <div class="flex flex-col md:flex-row">
-                                <div
-                                    class="md:w-56 flex-shrink-0 bg-neutral-50 border-r border-neutral-100 p-5 flex flex-col justify-center">
-                                    <div class="flex items-center gap-2 mb-1">
-                                        <span class="w-2 h-2 rounded-full bg-neutral-400 flex-shrink-0"></span>
-                                        <h3 class="font-bold text-neutral-800 text-sm">Freelance</h3>
+                        <div class="cs-accordion anim-card bg-white rounded-2xl border border-neutral-150 shadow-sm overflow-hidden"
+                            data-cs="exp-3" style="animation-delay:300ms">
+                            <button
+                                class="cs-trigger w-full text-left p-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 group focus:outline-none"
+                                onclick="toggleCS('exp-3', this)" aria-expanded="false" aria-controls="exp-3-body">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center shadow-inner overflow-hidden shrink-0">
+                                            <span class="text-xl">🚀</span>
+                                        </div>
+                                        <div>
+                                            <span
+                                                class="inline-block bg-neutral-100 text-neutral-600 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wide uppercase border border-neutral-200 mb-1">Jan
+                                                '23 – Jan '24</span>
+                                            <h3
+                                                class="text-lg font-bold text-neutral-900 leading-tight group-hover:text-red-700 transition-colors">
+                                                Digital Marketing Consultant</h3>
+                                        </div>
                                     </div>
-                                    <div class="text-xs font-semibold text-neutral-500 mb-2 pl-4">Digital Marketing
-                                        Consultant</div>
-                                    <span
-                                        class="text-xs font-mono text-neutral-400 bg-white border border-neutral-200 px-2 py-0.5 rounded w-fit ml-4">Jan
-                                        '23 – Jan '24</span>
+                                    <p class="text-neutral-500 text-sm mt-2 line-clamp-1 pr-8">
+                                        <strong>Freelance</strong> — Delivered customized SEO and keyword strategy for
+                                        local business growth.
+                                    </p>
                                 </div>
-                                <div class="flex-1 p-5">
+                                <div
+                                    class="mt-2 sm:mt-0 opacity-40 group-hover:opacity-100 transition-opacity shrink-0">
+                                    <svg class="cs-chevron w-6 h-6 transform transition-transform duration-300"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div id="exp-3-body" class="cs-body"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);">
+                                <div class="cs-inner p-6 pt-0 border-t border-neutral-100">
                                     <ul
-                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-600">
-                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Delivered
-                                            customized digital marketing services including SEO, keyword research, and
-                                            content optimization, focusing on local business growth.</li>
-                                        <li class="flex gap-2"><span class="text-neutral-400 mt-0.5">›</span>Executed
-                                            SEO
-                                            audits and optimized content to improve organic search traffic.</li>
+                                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-neutral-600 mt-4">
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Delivered
+                                            customized digital marketing for <strong class="text-neutral-800">5+ local
+                                                businesses</strong>, including SEO audits, keyword strategy, and content
+                                            optimization.</li>
+                                        <li class="flex gap-2"><span class="text-red-400 mt-0.5">›</span>Executed full
+                                            SEO audits and optimized on-page content, improving organic search
+                                            visibility by an estimated <strong class="text-neutral-800">30%</strong> for
+                                            key clients.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </section>
 
@@ -872,10 +1475,63 @@
                     <header class="mb-8">
                         <h2 class="anim-heading text-3xl font-bold text-neutral-800 mb-2">Skill Analytics</h2>
                         <p class="text-neutral-600">
-                            A quantitative breakdown of my skill set. The radar chart below illustrates the
+                            A quantitative breakdown of my skill set. The radar chart and proficiency bars below
+                            illustrate the
                             multi-disciplinary balance between Marketing, Technology, and Research capabilities.
                         </p>
                     </header>
+
+                    <!-- ── Proficiency Bars ── -->
+                    <div class="mb-8 bg-white rounded-xl border border-neutral-100 shadow-sm p-6">
+                        <h3 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-5">Tool Proficiency
+                        </h3>
+                        <div class="space-y-4" id="prof-bars">
+                            <!-- bars injected by JS -->
+                        </div>
+                    </div>
+
+                    <script>
+                            (function () {
+                                const tools = [
+                                    { name: 'SEO & SEM', pct: 88, color: '#dc2626' },
+                                    { name: 'Prompt Engineering', pct: 92, color: '#dc2626' },
+                                    { name: 'Email Marketing', pct: 80, color: '#6b21a8' },
+                                    { name: 'Power BI', pct: 70, color: '#1d4ed8' },
+                                    { name: 'Zapier Automation', pct: 75, color: '#d97706' },
+                                    { name: 'MS Excel / Sheets', pct: 82, color: '#15803d' },
+                                    { name: 'Canva / Design AI', pct: 85, color: '#0891b2' },
+                                    { name: 'WordPress / Web', pct: 68, color: '#374151' },
+                                ];
+                                const container = document.getElementById('prof-bars');
+                                if (container) {
+                                    tools.forEach(t => {
+                                        container.insertAdjacentHTML('beforeend',
+                                            `<div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-semibold text-neutral-700">${t.name}</span>
+                                            <span class="text-sm font-bold" style="color:${t.color}">${t.pct}%</span>
+                                        </div>
+                                        <div class="w-full bg-neutral-100 rounded-full h-2.5 overflow-hidden">
+                                            <div class="h-2.5 rounded-full prof-bar" style="width:0%;background:${t.color};transition:width 1.2s cubic-bezier(0.4,0,0.2,1)" data-target="${t.pct}"></div>
+                                        </div>
+                                    </div>`
+                                        );
+                                    });
+                                    // Animate on scroll into view
+                                    const observer = new IntersectionObserver(entries => {
+                                        entries.forEach(e => {
+                                            if (e.isIntersecting) {
+                                                document.querySelectorAll('.prof-bar').forEach(b => {
+                                                    b.style.width = b.dataset.target + '%';
+                                                });
+                                                observer.disconnect();
+                                            }
+                                        });
+                                    }, { threshold: 0.3 });
+                                    observer.observe(container);
+                                }
+                            })();
+                    </script>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <!-- Skill Categories -->
@@ -1067,364 +1723,9 @@
                     </div>
                 </section>
 
-                <!-- VIEW: CASE STUDIES -->
-                <section id="case-studies" class="view-section scroll-mt-20">
-                    <header class="mb-8">
-                        <h2 class="anim-heading text-3xl font-bold text-neutral-800 mb-2">Case Studies</h2>
-                        <p class="text-neutral-600">
-                            Real-world problems diagnosed and solved. These case studies document analytical process,
-                            debugging methodology, and measurable outcomes from live client projects.
-                        </p>
-                    </header>
 
-                    <!-- Case Study Card: GA4 -->
-                    <div class="anim-card bg-white rounded-2xl border border-neutral-100 shadow-sm overflow-hidden"
-                        style="animation-delay:80ms">
 
-                        <!-- Card Header Banner -->
-                        <div class="relative overflow-hidden"
-                            style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%);">
-                            <div class="absolute inset-0 opacity-10"
-                                style="background-image: linear-gradient(#dc2626 1px, transparent 1px), linear-gradient(90deg, #dc2626 1px, transparent 1px); background-size: 40px 40px;">
-                            </div>
-                            <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20"
-                                style="background: radial-gradient(circle, #dc2626 0%, transparent 70%); transform: translate(30%, -30%);">
-                            </div>
-                            <div class="relative z-10 p-8 md:p-10">
-                                <div
-                                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 tracking-wider">
-                                    <span class="w-2 h-2 rounded-full bg-green-400"></span>
-                                    RESOLVED — MARCH 2026
-                                </div>
-                                <h3 class="text-2xl md:text-3xl font-black text-white leading-tight mb-2">
-                                    Diagnosing &amp; Fixing a Silent<br><span class="text-red-400">Google Analytics 4
-                                        Failure</span>
-                                </h3>
-                                <p class="text-neutral-400 text-sm">
-                                    Client: A.S. Enterpriis — Leather Garments &amp; Safety Equipment Manufacturer
-                                    &nbsp;·&nbsp;
-                                    <a href="https://www.asenterpriis.com" target="_blank"
-                                        class="text-red-400 hover:text-red-300 transition-colors">asenterpriis.com ↗</a>
-                                </p>
-                                <p class="text-neutral-500 text-xs mt-1">Aditya Singh &nbsp;·&nbsp; AI-Driven Digital
-                                    Marketer &nbsp;·&nbsp; aditya818610@gmail.com</p>
-                            </div>
-                        </div>
 
-                        <div class="p-6 md:p-10 space-y-10">
-
-                            <!-- At a Glance KPIs -->
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
-                                    <div class="text-2xl font-black text-neutral-900">7</div>
-                                    <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">Days
-                                        Lost</div>
-                                </div>
-                                <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
-                                    <div class="text-2xl font-black text-red-500">&lt;2h</div>
-                                    <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">Time
-                                        to Fix</div>
-                                </div>
-                                <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
-                                    <div class="text-2xl font-black text-neutral-900">404</div>
-                                    <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">Root
-                                        Cause (HTTP)</div>
-                                </div>
-                                <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
-                                    <div class="text-2xl font-black text-green-600">✅</div>
-                                    <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">Fully
-                                        Restored</div>
-                                </div>
-                            </div>
-
-                            <!-- The Challenge -->
-                            <div>
-                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-3">The Challenge
-                                </h4>
-                                <div class="bg-neutral-950 rounded-xl p-6 border border-neutral-800">
-                                    <p class="text-neutral-300 text-sm leading-relaxed mb-4">After launching the A.S.
-                                        Enterpriis website, GA4 was fully configured and deployed — property created,
-                                        Measurement ID embedded, site live on Vercel. <strong class="text-white">But
-                                            after 7 days, the GA4 dashboard showed absolutely zero data.</strong></p>
-                                    <p class="text-neutral-400 text-sm leading-relaxed">No users. No sessions. No page
-                                        views. The "Data collection isn't active" warning persisted even when visiting
-                                        the site in real time from multiple devices and networks.</p>
-                                </div>
-                                <!-- Screenshot: No Data -->
-                                <div class="mt-4 rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
-                                    <div
-                                        class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
-                                        📸 GA4 Dashboard — Zero Data Warning</div>
-                                    <img src="case-study/assets/ga4-no-data-received.png"
-                                        alt="GA4 dashboard showing no data received" class="w-full object-cover"
-                                        loading="lazy">
-                                </div>
-                            </div>
-
-                            <!-- The Investigation -->
-                            <div>
-                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">The
-                                    Investigation</h4>
-                                <div class="space-y-4">
-                                    <div
-                                        class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
-                                        <div
-                                            class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-black">
-                                            1</div>
-                                        <div>
-                                            <div class="font-bold text-neutral-800 text-sm mb-1">Surface-Level Config
-                                                Check</div>
-                                            <p class="text-neutral-500 text-xs leading-relaxed">Verified the Measurement
-                                                ID was present in code, matched the GA4 dashboard, the website URL was
-                                                correct, deployment was live, and Enhanced Measurement was on. <strong
-                                                    class="text-neutral-700">Everything looked perfect on paper — the
-                                                    classic trap.</strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
-                                        style="border-left: 3px solid #dc2626;">
-                                        <div
-                                            class="flex-shrink-0 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-xs font-black">
-                                            2</div>
-                                        <div>
-                                            <div class="font-bold text-neutral-800 text-sm mb-1">Network-Level Debugging
-                                                — The Smoking Gun</div>
-                                            <p class="text-neutral-500 text-xs leading-relaxed mb-3">Opened browser
-                                                DevTools and inspected network requests on the live production site. The
-                                                <code
-                                                    class="bg-neutral-100 px-1.5 py-0.5 rounded text-red-600 font-mono text-xs">gtag/js</code>
-                                                script was returning a <strong class="text-red-600">404 Not
-                                                    Found</strong> — Google's servers didn't recognise the Measurement
-                                                ID.
-                                            </p>
-                                            <div class="grid grid-cols-3 gap-2 text-xs">
-                                                <div
-                                                    class="bg-neutral-50 rounded-lg p-2 border border-neutral-100 text-center">
-                                                    <div class="font-mono font-bold text-neutral-700">Request</div>
-                                                    <div class="text-neutral-500 mt-1 text-xs">gtag/js?id=G-4JGJ...
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    class="bg-neutral-50 rounded-lg p-2 border border-neutral-100 text-center">
-                                                    <div class="font-mono font-bold text-green-600">Expected</div>
-                                                    <div class="text-neutral-500 mt-1">200 OK (JS)</div>
-                                                </div>
-                                                <div class="bg-red-50 rounded-lg p-2 border border-red-100 text-center">
-                                                    <div class="font-mono font-bold text-red-600">Actual</div>
-                                                    <div class="text-neutral-500 mt-1">404 Not Found</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
-                                        <div
-                                            class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-black">
-                                            3</div>
-                                        <div>
-                                            <div class="font-bold text-neutral-800 text-sm mb-1">Root Cause Analysis
-                                            </div>
-                                            <p class="text-neutral-500 text-xs leading-relaxed">The GA4 property had
-                                                been migrated between Google accounts. During the migration, the Data
-                                                Stream's Measurement ID became <strong
-                                                    class="text-neutral-700">orphaned</strong> — visible in the admin UI
-                                                but no longer recognised by Google's global tag-serving infrastructure.
-                                                A rare but documented edge case where GA4's admin UI falls out of sync
-                                                post-migration.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- The Solution -->
-                            <div>
-                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">The Solution
-                                </h4>
-                                <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-                                    <div
-                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
-                                        <div class="text-2xl mb-2">🗑️</div>
-                                        <div class="text-xs font-bold text-neutral-700 mb-1">Delete Broken Stream</div>
-                                        <div class="text-xs text-neutral-400">Removed orphaned Measurement ID from GA4
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
-                                        <div class="text-2xl mb-2">➕</div>
-                                        <div class="text-xs font-bold text-neutral-700 mb-1">Fresh Data Stream</div>
-                                        <div class="text-xs text-neutral-400">New Web stream with correct URL &amp; name
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
-                                        <div class="text-2xl mb-2">✅</div>
-                                        <div class="text-xs font-bold text-neutral-700 mb-1">Verify New ID</div>
-                                        <div class="text-xs text-neutral-400">Confirmed 200 OK from Google's servers
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
-                                        <div class="text-2xl mb-2">🚀</div>
-                                        <div class="text-xs font-bold text-neutral-700 mb-1">Update &amp; Deploy</div>
-                                        <div class="text-xs text-neutral-400">GitHub → Vercel CI/CD, live in 60s</div>
-                                    </div>
-                                    <div
-                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm col-span-2 md:col-span-1">
-                                        <div class="text-2xl mb-2">📊</div>
-                                        <div class="text-xs font-bold text-neutral-700 mb-1">Confirm Collection</div>
-                                        <div class="text-xs text-neutral-400">Realtime: 1 active user in minutes</div>
-                                    </div>
-                                </div>
-                                <!-- Screenshot: Success -->
-                                <div class="mt-4 rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
-                                    <div
-                                        class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
-                                        📸 GA4 Realtime — Active User Confirmed ✅</div>
-                                    <img src="case-study/assets/ga4-realtime-success.png"
-                                        alt="GA4 Realtime showing 1 active user in Kolkata" class="w-full object-cover"
-                                        loading="lazy">
-                                </div>
-                            </div>
-
-                            <!-- Results Table -->
-                            <div>
-                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Results</h4>
-                                <div class="overflow-x-auto rounded-xl border border-neutral-100 shadow-sm">
-                                    <table class="w-full text-sm">
-                                        <thead>
-                                            <tr class="bg-neutral-900 text-white">
-                                                <th
-                                                    class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider">
-                                                    Metric</th>
-                                                <th
-                                                    class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider">
-                                                    Before</th>
-                                                <th
-                                                    class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider text-green-400">
-                                                    After</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y divide-neutral-100 bg-white">
-                                            <tr class="hover:bg-neutral-50 transition-colors">
-                                                <td class="px-5 py-3 font-semibold text-neutral-700">Data Collection
-                                                    Status</td>
-                                                <td class="px-5 py-3 text-red-500 font-mono text-xs">❌ Inactive</td>
-                                                <td class="px-5 py-3 text-green-600 font-mono text-xs">✅ Active</td>
-                                            </tr>
-                                            <tr class="hover:bg-neutral-50 transition-colors">
-                                                <td class="px-5 py-3 font-semibold text-neutral-700">Realtime Users
-                                                    Visible</td>
-                                                <td class="px-5 py-3 text-neutral-400 font-mono text-xs">0</td>
-                                                <td class="px-5 py-3 text-green-600 font-mono text-xs">1+ (immediate)
-                                                </td>
-                                            </tr>
-                                            <tr class="hover:bg-neutral-50 transition-colors">
-                                                <td class="px-5 py-3 font-semibold text-neutral-700">Events Captured
-                                                </td>
-                                                <td class="px-5 py-3 text-neutral-400 font-mono text-xs">None</td>
-                                                <td class="px-5 py-3 text-green-600 font-mono text-xs">Page views,
-                                                    Scrolls, Clicks</td>
-                                            </tr>
-                                            <tr class="hover:bg-neutral-50 transition-colors">
-                                                <td class="px-5 py-3 font-semibold text-neutral-700">Time to Resolution
-                                                </td>
-                                                <td class="px-5 py-3 text-neutral-400 font-mono text-xs">—</td>
-                                                <td class="px-5 py-3 text-green-600 font-mono text-xs">&lt; 2 hours</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <!-- Key Takeaways -->
-                            <div>
-                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Key Takeaways
-                                </h4>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
-                                        <span class="text-lg flex-shrink-0">🔍</span>
-                                        <div>
-                                            <div class="font-bold text-neutral-800 text-sm mb-1">"Configured" ≠
-                                                "Working"</div>
-                                            <p class="text-neutral-500 text-xs leading-relaxed">All visible
-                                                configuration was correct. The failure was only detectable at the
-                                                network level — a gap most marketers never check.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
-                                        <span class="text-lg flex-shrink-0">🌐</span>
-                                        <div>
-                                            <div class="font-bold text-neutral-800 text-sm mb-1">Always Verify at
-                                                Network Level</div>
-                                            <p class="text-neutral-500 text-xs leading-relaxed">Checking whether <code
-                                                    class="bg-neutral-200 px-1 rounded font-mono text-xs">gtag.js?id=YOUR_ID</code>
-                                                returns 200 vs 404 is the single fastest diagnostic step.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
-                                        <span class="text-lg flex-shrink-0">⚠️</span>
-                                        <div>
-                                            <div class="font-bold text-neutral-800 text-sm mb-1">Account Migrations
-                                                Break Streams</div>
-                                            <p class="text-neutral-500 text-xs leading-relaxed">Moving a GA4 property
-                                                between accounts can silently orphan data streams. Always re-verify data
-                                                collection after any account migration.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
-                                        <span class="text-lg flex-shrink-0">📊</span>
-                                        <div>
-                                            <div class="font-bold text-neutral-800 text-sm mb-1">Realtime Reports =
-                                                Instant Feedback</div>
-                                            <p class="text-neutral-500 text-xs leading-relaxed">GA4 Realtime is the
-                                                fastest verification tool. One tab on the site, one on Realtime — you'll
-                                                see data within seconds if tracking works.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Infographic -->
-                            <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
-                                <div
-                                    class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
-                                    📊 Case Study Infographic — Full Process Summary</div>
-                                <img src="case-study/assets/ga4-case-study-infographic.png"
-                                    alt="GA4 case study process infographic" class="w-full object-cover" loading="lazy">
-                            </div>
-
-                            <!-- Skills Tags -->
-                            <div class="border-t border-neutral-100 pt-6">
-                                <div class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-3">Tools
-                                    &amp; Skills Demonstrated</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Google
-                                        Analytics 4</span>
-                                    <span
-                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Web
-                                        Analytics Debugging</span>
-                                    <span
-                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Network
-                                        Inspection</span>
-                                    <span
-                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">HTTP
-                                        Status Verification</span>
-                                    <span
-                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">CI/CD
-                                        Deployment</span>
-                                    <span
-                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">AI-Assisted
-                                        Diagnosis</span>
-                                    <span
-                                        class="px-3 py-1.5 bg-red-900/60 text-red-300 rounded-full text-xs font-medium border border-red-800">Resolved
-                                        in &lt; 2 hours</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
 
             </div>
         </main>
@@ -1750,7 +2051,171 @@
         } else {
             initializeApp();
         }
+
+        // ─── Case Study Accordion ────────────────────────────────────────────
+        function toggleCS(id, triggerBtn) {
+            const body = document.getElementById(id + '-body');
+            const chevron = triggerBtn.querySelector('.cs-chevron');
+            const isOpen = triggerBtn.getAttribute('aria-expanded') === 'true';
+
+            if (isOpen) {
+                // Collapse
+                body.style.maxHeight = '0';
+                triggerBtn.setAttribute('aria-expanded', 'false');
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+            } else {
+                // Expand — set max-height to scrollHeight so CSS transition works
+                body.style.maxHeight = body.scrollHeight + 'px';
+                triggerBtn.setAttribute('aria-expanded', 'true');
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+                // After transition, scroll trigger into view so header stays visible
+                setTimeout(() => {
+                    triggerBtn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 520);
+            }
+        }
+
+        // ─── Back to Top Button Logic ────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            const backToTopBtn = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
     </script>
+
+
+
+    <!-- Contact Popup Modal -->
+    <div id="contact-modal"
+        class="fixed inset-0 z-[9999] flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none"
+        role="dialog" aria-modal="true" aria-label="Contact Options">
+        <!-- Backdrop -->
+        <div id="contact-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onclick="closeContactModal()"></div>
+        <!-- Card -->
+        <div class="relative bg-neutral-950 border border-neutral-800 rounded-2xl shadow-2xl p-6 w-full max-w-sm transform scale-90 transition-transform duration-300"
+            id="contact-modal-card">
+            <!-- Close -->
+            <button onclick="closeContactModal()"
+                class="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <!-- Header -->
+            <div class="mb-5 pr-6">
+                <p class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-1">Get in Touch</p>
+                <h3 class="text-xl font-black text-white leading-tight">Let's connect 👋</h3>
+                <p class="text-xs text-neutral-400 mt-1">Choose a platform to reach Aditya</p>
+            </div>
+            <!-- Options -->
+            <div class="space-y-3">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/918335878691" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-4 p-4 rounded-xl bg-neutral-900 hover:bg-[#25D366]/10 border border-neutral-800 hover:border-[#25D366]/40 transition-all duration-200 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-[#25D366]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#25D366]/25 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="#25D366" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-white">WhatsApp</div>
+                        <div class="text-xs text-neutral-400">+91 83358 78691</div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-neutral-600 group-hover:text-[#25D366] ml-auto transition-colors"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+                <!-- Email -->
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aditya818610@gmail.com" target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 p-4 rounded-xl bg-neutral-900 hover:bg-red-500/10 border border-neutral-800 hover:border-red-500/40 transition-all duration-200 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-white">Email</div>
+                        <div class="text-xs text-neutral-400">aditya818610@gmail.com</div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-neutral-600 group-hover:text-red-400 ml-auto transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/aditya-singh-43162136b" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-4 p-4 rounded-xl bg-neutral-900 hover:bg-[#0a66c2]/10 border border-neutral-800 hover:border-[#0a66c2]/40 transition-all duration-200 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-[#0a66c2]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0a66c2]/25 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="#0a66c2" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-white">LinkedIn</div>
+                        <div class="text-xs text-neutral-400">aditya-singh-43162136b</div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-neutral-600 group-hover:text-[#0a66c2] ml-auto transition-colors"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openContactModal() {
+            const modal = document.getElementById('contact-modal');
+            const card = document.getElementById('contact-modal-card');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            setTimeout(() => { card.classList.remove('scale-90'); card.classList.add('scale-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            const card = document.getElementById('contact-modal-card');
+            card.classList.remove('scale-100'); card.classList.add('scale-90');
+            modal.classList.remove('opacity-100'); modal.classList.add('opacity-0');
+            setTimeout(() => { modal.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+        }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeContactModal(); });
+    </script>
+    <button id="back-to-top"
+        class="w-12 h-12 bg-black text-white rounded-full shadow-lg flex items-center justify-center hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors"
+        aria-label="Back to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
 
     <!-- Footer -->
     <footer class="w-full bg-black text-neutral-500 text-center py-6 text-xs border-t border-neutral-900">
