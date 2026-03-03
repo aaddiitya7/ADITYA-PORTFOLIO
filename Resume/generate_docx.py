@@ -286,6 +286,26 @@ def create_resume():
     add_horizontal_rule(doc)
 
     # ════════════════════════════════════════════════════════════════
+    # CASE STUDIES
+    # ════════════════════════════════════════════════════════════════
+    add_section_header(doc, 'CASE STUDIES')
+
+    add_job_entry(doc,
+        'Diagnosing & Fixing a Silent GA4 Analytics Failure  —  A.S. Enterpriis',
+        'March 2026',
+        [
+            'Identified root cause of 7 days of zero GA4 data: an orphaned Measurement ID '
+            'caused by an account-level property migration that silently disconnected '
+            "Google's tag-serving backend — undetectable in the GA4 admin UI.",
+            'Performed network-level HTTP debugging (diagnosed 404 → 200 status mismatch), '
+            're-created the data stream, and deployed the fix via GitHub → Vercel CI/CD '
+            'pipeline in under 2 hours, fully restoring data collection.',
+        ]
+    )
+
+    add_horizontal_rule(doc)
+
+    # ════════════════════════════════════════════════════════════════
     # EDUCATION
     # ════════════════════════════════════════════════════════════════
     add_section_header(doc, 'EDUCATION')

@@ -18,6 +18,11 @@ AI-Driven Digital Marketer and BBA Marketing student at Amity University (Gradua
 * Created an interactive, value-driven Progressive Web App (PWA) to serve as a powerful lead magnet and engagement tool.
 * Mastered prompt engineering to instruct AI code models to build the complex application from scratch, turning a strategic concept into a live product in record time.
 
+## CASE STUDIES
+**Diagnosing & Fixing a Silent GA4 Analytics Failure | A.S. Enterpriis** — *March 2026*
+* Identified root cause of 7 days of zero GA4 data: an orphaned Measurement ID caused by an account-level property migration that silently disconnected Google's tag-serving backend — undetectable through the GA4 admin UI.
+* Performed network-level HTTP debugging (diagnosed 404 → 200 status mismatch), re-created the data stream, and deployed the fix via GitHub → Vercel CI/CD pipeline in under 2 hours, fully restoring data collection.
+
 ## PROFESSIONAL EXPERIENCE
 **Digital Marketing and Market Research Intern | Aglo Bond Pvt ltd.**
 *June 2025 – August 2025*

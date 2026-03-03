@@ -281,7 +281,12 @@
                     <a href="#education" onclick="scrollToSection('education')"
                         class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
                         data-target="education" aria-label="Navigate to Education and Certifications section">
-                        <span aria-hidden="true">🎓</span> Education & Certs
+                        <span aria-hidden="true">🎓</span> Education &amp; Certs
+                    </a>
+                    <a href="#case-studies" onclick="scrollToSection('case-studies')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 active:scale-95 text-neutral-300 hover:bg-neutral-900 hover:text-white flex items-center gap-3 border-l-4 border-transparent"
+                        data-target="case-studies" aria-label="Navigate to Case Studies section">
+                        <span aria-hidden="true">📄</span> Case Studies
                     </a>
 
                     <!-- Download Resume -->
@@ -459,6 +464,15 @@
                                 <a href="#projects"
                                     class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold rounded-lg transition-all duration-200 backdrop-blur">
                                     View Projects
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </a>
+                                <a href="#case-studies" onclick="scrollToSection('case-studies'); return false;"
+                                    class="inline-flex items-center gap-2 px-6 py-3 bg-red-700/40 hover:bg-red-700/70 border border-red-500/50 text-red-300 hover:text-white text-sm font-semibold rounded-lg transition-all duration-200 backdrop-blur">
+                                    📄 Case Study
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1053,6 +1067,365 @@
                     </div>
                 </section>
 
+                <!-- VIEW: CASE STUDIES -->
+                <section id="case-studies" class="view-section scroll-mt-20">
+                    <header class="mb-8">
+                        <h2 class="anim-heading text-3xl font-bold text-neutral-800 mb-2">Case Studies</h2>
+                        <p class="text-neutral-600">
+                            Real-world problems diagnosed and solved. These case studies document analytical process,
+                            debugging methodology, and measurable outcomes from live client projects.
+                        </p>
+                    </header>
+
+                    <!-- Case Study Card: GA4 -->
+                    <div class="anim-card bg-white rounded-2xl border border-neutral-100 shadow-sm overflow-hidden"
+                        style="animation-delay:80ms">
+
+                        <!-- Card Header Banner -->
+                        <div class="relative overflow-hidden"
+                            style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%);">
+                            <div class="absolute inset-0 opacity-10"
+                                style="background-image: linear-gradient(#dc2626 1px, transparent 1px), linear-gradient(90deg, #dc2626 1px, transparent 1px); background-size: 40px 40px;">
+                            </div>
+                            <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20"
+                                style="background: radial-gradient(circle, #dc2626 0%, transparent 70%); transform: translate(30%, -30%);">
+                            </div>
+                            <div class="relative z-10 p-8 md:p-10">
+                                <div
+                                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 tracking-wider">
+                                    <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                                    RESOLVED — MARCH 2026
+                                </div>
+                                <h3 class="text-2xl md:text-3xl font-black text-white leading-tight mb-2">
+                                    Diagnosing &amp; Fixing a Silent<br><span class="text-red-400">Google Analytics 4
+                                        Failure</span>
+                                </h3>
+                                <p class="text-neutral-400 text-sm">
+                                    Client: A.S. Enterpriis — Leather Garments &amp; Safety Equipment Manufacturer
+                                    &nbsp;·&nbsp;
+                                    <a href="https://www.asenterpriis.com" target="_blank"
+                                        class="text-red-400 hover:text-red-300 transition-colors">asenterpriis.com ↗</a>
+                                </p>
+                                <p class="text-neutral-500 text-xs mt-1">Aditya Singh &nbsp;·&nbsp; AI-Driven Digital
+                                    Marketer &nbsp;·&nbsp; aditya818610@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 md:p-10 space-y-10">
+
+                            <!-- At a Glance KPIs -->
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
+                                    <div class="text-2xl font-black text-neutral-900">7</div>
+                                    <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">Days
+                                        Lost</div>
+                                </div>
+                                <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
+                                    <div class="text-2xl font-black text-red-500">&lt;2h</div>
+                                    <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">Time
+                                        to Fix</div>
+                                </div>
+                                <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
+                                    <div class="text-2xl font-black text-neutral-900">404</div>
+                                    <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">Root
+                                        Cause (HTTP)</div>
+                                </div>
+                                <div class="bg-neutral-50 rounded-xl p-4 border border-neutral-100 text-center">
+                                    <div class="text-2xl font-black text-green-600">✅</div>
+                                    <div class="text-xs font-bold text-neutral-400 uppercase tracking-wider mt-1">Fully
+                                        Restored</div>
+                                </div>
+                            </div>
+
+                            <!-- The Challenge -->
+                            <div>
+                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-3">The Challenge
+                                </h4>
+                                <div class="bg-neutral-950 rounded-xl p-6 border border-neutral-800">
+                                    <p class="text-neutral-300 text-sm leading-relaxed mb-4">After launching the A.S.
+                                        Enterpriis website, GA4 was fully configured and deployed — property created,
+                                        Measurement ID embedded, site live on Vercel. <strong class="text-white">But
+                                            after 7 days, the GA4 dashboard showed absolutely zero data.</strong></p>
+                                    <p class="text-neutral-400 text-sm leading-relaxed">No users. No sessions. No page
+                                        views. The "Data collection isn't active" warning persisted even when visiting
+                                        the site in real time from multiple devices and networks.</p>
+                                </div>
+                                <!-- Screenshot: No Data -->
+                                <div class="mt-4 rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+                                    <div
+                                        class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
+                                        📸 GA4 Dashboard — Zero Data Warning</div>
+                                    <img src="case-study/assets/ga4-no-data-received.png"
+                                        alt="GA4 dashboard showing no data received" class="w-full object-cover"
+                                        loading="lazy">
+                                </div>
+                            </div>
+
+                            <!-- The Investigation -->
+                            <div>
+                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">The
+                                    Investigation</h4>
+                                <div class="space-y-4">
+                                    <div
+                                        class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                                        <div
+                                            class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-black">
+                                            1</div>
+                                        <div>
+                                            <div class="font-bold text-neutral-800 text-sm mb-1">Surface-Level Config
+                                                Check</div>
+                                            <p class="text-neutral-500 text-xs leading-relaxed">Verified the Measurement
+                                                ID was present in code, matched the GA4 dashboard, the website URL was
+                                                correct, deployment was live, and Enhanced Measurement was on. <strong
+                                                    class="text-neutral-700">Everything looked perfect on paper — the
+                                                    classic trap.</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
+                                        style="border-left: 3px solid #dc2626;">
+                                        <div
+                                            class="flex-shrink-0 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-xs font-black">
+                                            2</div>
+                                        <div>
+                                            <div class="font-bold text-neutral-800 text-sm mb-1">Network-Level Debugging
+                                                — The Smoking Gun</div>
+                                            <p class="text-neutral-500 text-xs leading-relaxed mb-3">Opened browser
+                                                DevTools and inspected network requests on the live production site. The
+                                                <code
+                                                    class="bg-neutral-100 px-1.5 py-0.5 rounded text-red-600 font-mono text-xs">gtag/js</code>
+                                                script was returning a <strong class="text-red-600">404 Not
+                                                    Found</strong> — Google's servers didn't recognise the Measurement
+                                                ID.
+                                            </p>
+                                            <div class="grid grid-cols-3 gap-2 text-xs">
+                                                <div
+                                                    class="bg-neutral-50 rounded-lg p-2 border border-neutral-100 text-center">
+                                                    <div class="font-mono font-bold text-neutral-700">Request</div>
+                                                    <div class="text-neutral-500 mt-1 text-xs">gtag/js?id=G-4JGJ...
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="bg-neutral-50 rounded-lg p-2 border border-neutral-100 text-center">
+                                                    <div class="font-mono font-bold text-green-600">Expected</div>
+                                                    <div class="text-neutral-500 mt-1">200 OK (JS)</div>
+                                                </div>
+                                                <div class="bg-red-50 rounded-lg p-2 border border-red-100 text-center">
+                                                    <div class="font-mono font-bold text-red-600">Actual</div>
+                                                    <div class="text-neutral-500 mt-1">404 Not Found</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex gap-4 bg-white border border-neutral-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                                        <div
+                                            class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-black">
+                                            3</div>
+                                        <div>
+                                            <div class="font-bold text-neutral-800 text-sm mb-1">Root Cause Analysis
+                                            </div>
+                                            <p class="text-neutral-500 text-xs leading-relaxed">The GA4 property had
+                                                been migrated between Google accounts. During the migration, the Data
+                                                Stream's Measurement ID became <strong
+                                                    class="text-neutral-700">orphaned</strong> — visible in the admin UI
+                                                but no longer recognised by Google's global tag-serving infrastructure.
+                                                A rare but documented edge case where GA4's admin UI falls out of sync
+                                                post-migration.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- The Solution -->
+                            <div>
+                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">The Solution
+                                </h4>
+                                <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                                    <div
+                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
+                                        <div class="text-2xl mb-2">🗑️</div>
+                                        <div class="text-xs font-bold text-neutral-700 mb-1">Delete Broken Stream</div>
+                                        <div class="text-xs text-neutral-400">Removed orphaned Measurement ID from GA4
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
+                                        <div class="text-2xl mb-2">➕</div>
+                                        <div class="text-xs font-bold text-neutral-700 mb-1">Fresh Data Stream</div>
+                                        <div class="text-xs text-neutral-400">New Web stream with correct URL &amp; name
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
+                                        <div class="text-2xl mb-2">✅</div>
+                                        <div class="text-xs font-bold text-neutral-700 mb-1">Verify New ID</div>
+                                        <div class="text-xs text-neutral-400">Confirmed 200 OK from Google's servers
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm">
+                                        <div class="text-2xl mb-2">🚀</div>
+                                        <div class="text-xs font-bold text-neutral-700 mb-1">Update &amp; Deploy</div>
+                                        <div class="text-xs text-neutral-400">GitHub → Vercel CI/CD, live in 60s</div>
+                                    </div>
+                                    <div
+                                        class="bg-neutral-50 border border-neutral-100 rounded-xl p-4 text-center shadow-sm col-span-2 md:col-span-1">
+                                        <div class="text-2xl mb-2">📊</div>
+                                        <div class="text-xs font-bold text-neutral-700 mb-1">Confirm Collection</div>
+                                        <div class="text-xs text-neutral-400">Realtime: 1 active user in minutes</div>
+                                    </div>
+                                </div>
+                                <!-- Screenshot: Success -->
+                                <div class="mt-4 rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+                                    <div
+                                        class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
+                                        📸 GA4 Realtime — Active User Confirmed ✅</div>
+                                    <img src="case-study/assets/ga4-realtime-success.png"
+                                        alt="GA4 Realtime showing 1 active user in Kolkata" class="w-full object-cover"
+                                        loading="lazy">
+                                </div>
+                            </div>
+
+                            <!-- Results Table -->
+                            <div>
+                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Results</h4>
+                                <div class="overflow-x-auto rounded-xl border border-neutral-100 shadow-sm">
+                                    <table class="w-full text-sm">
+                                        <thead>
+                                            <tr class="bg-neutral-900 text-white">
+                                                <th
+                                                    class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider">
+                                                    Metric</th>
+                                                <th
+                                                    class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider">
+                                                    Before</th>
+                                                <th
+                                                    class="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider text-green-400">
+                                                    After</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-neutral-100 bg-white">
+                                            <tr class="hover:bg-neutral-50 transition-colors">
+                                                <td class="px-5 py-3 font-semibold text-neutral-700">Data Collection
+                                                    Status</td>
+                                                <td class="px-5 py-3 text-red-500 font-mono text-xs">❌ Inactive</td>
+                                                <td class="px-5 py-3 text-green-600 font-mono text-xs">✅ Active</td>
+                                            </tr>
+                                            <tr class="hover:bg-neutral-50 transition-colors">
+                                                <td class="px-5 py-3 font-semibold text-neutral-700">Realtime Users
+                                                    Visible</td>
+                                                <td class="px-5 py-3 text-neutral-400 font-mono text-xs">0</td>
+                                                <td class="px-5 py-3 text-green-600 font-mono text-xs">1+ (immediate)
+                                                </td>
+                                            </tr>
+                                            <tr class="hover:bg-neutral-50 transition-colors">
+                                                <td class="px-5 py-3 font-semibold text-neutral-700">Events Captured
+                                                </td>
+                                                <td class="px-5 py-3 text-neutral-400 font-mono text-xs">None</td>
+                                                <td class="px-5 py-3 text-green-600 font-mono text-xs">Page views,
+                                                    Scrolls, Clicks</td>
+                                            </tr>
+                                            <tr class="hover:bg-neutral-50 transition-colors">
+                                                <td class="px-5 py-3 font-semibold text-neutral-700">Time to Resolution
+                                                </td>
+                                                <td class="px-5 py-3 text-neutral-400 font-mono text-xs">—</td>
+                                                <td class="px-5 py-3 text-green-600 font-mono text-xs">&lt; 2 hours</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Key Takeaways -->
+                            <div>
+                                <h4 class="text-xs font-bold text-red-500 uppercase tracking-widest mb-4">Key Takeaways
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
+                                        <span class="text-lg flex-shrink-0">🔍</span>
+                                        <div>
+                                            <div class="font-bold text-neutral-800 text-sm mb-1">"Configured" ≠
+                                                "Working"</div>
+                                            <p class="text-neutral-500 text-xs leading-relaxed">All visible
+                                                configuration was correct. The failure was only detectable at the
+                                                network level — a gap most marketers never check.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
+                                        <span class="text-lg flex-shrink-0">🌐</span>
+                                        <div>
+                                            <div class="font-bold text-neutral-800 text-sm mb-1">Always Verify at
+                                                Network Level</div>
+                                            <p class="text-neutral-500 text-xs leading-relaxed">Checking whether <code
+                                                    class="bg-neutral-200 px-1 rounded font-mono text-xs">gtag.js?id=YOUR_ID</code>
+                                                returns 200 vs 404 is the single fastest diagnostic step.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
+                                        <span class="text-lg flex-shrink-0">⚠️</span>
+                                        <div>
+                                            <div class="font-bold text-neutral-800 text-sm mb-1">Account Migrations
+                                                Break Streams</div>
+                                            <p class="text-neutral-500 text-xs leading-relaxed">Moving a GA4 property
+                                                between accounts can silently orphan data streams. Always re-verify data
+                                                collection after any account migration.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 bg-neutral-50 border border-neutral-100 rounded-xl p-5">
+                                        <span class="text-lg flex-shrink-0">📊</span>
+                                        <div>
+                                            <div class="font-bold text-neutral-800 text-sm mb-1">Realtime Reports =
+                                                Instant Feedback</div>
+                                            <p class="text-neutral-500 text-xs leading-relaxed">GA4 Realtime is the
+                                                fastest verification tool. One tab on the site, one on Realtime — you'll
+                                                see data within seconds if tracking works.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Infographic -->
+                            <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+                                <div
+                                    class="bg-neutral-100 px-4 py-2 text-xs font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-200">
+                                    📊 Case Study Infographic — Full Process Summary</div>
+                                <img src="case-study/assets/ga4-case-study-infographic.png"
+                                    alt="GA4 case study process infographic" class="w-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- Skills Tags -->
+                            <div class="border-t border-neutral-100 pt-6">
+                                <div class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-3">Tools
+                                    &amp; Skills Demonstrated</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Google
+                                        Analytics 4</span>
+                                    <span
+                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Web
+                                        Analytics Debugging</span>
+                                    <span
+                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">Network
+                                        Inspection</span>
+                                    <span
+                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">HTTP
+                                        Status Verification</span>
+                                    <span
+                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">CI/CD
+                                        Deployment</span>
+                                    <span
+                                        class="px-3 py-1.5 bg-neutral-900 text-neutral-300 rounded-full text-xs font-medium">AI-Assisted
+                                        Diagnosis</span>
+                                    <span
+                                        class="px-3 py-1.5 bg-red-900/60 text-red-300 rounded-full text-xs font-medium border border-red-800">Resolved
+                                        in &lt; 2 hours</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </main>
 
@@ -1424,9 +1797,17 @@
             onclick="scrollToSection('education'); setMobileActive('education')" aria-label="Education">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
             </svg>
             Edu.
+        </button>
+        <button class="mob-nav-btn" id="mob-btn-case-studies"
+            onclick="scrollToSection('case-studies'); setMobileActive('case-studies')" aria-label="Case Studies">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Cases
         </button>
     </nav>
 </body>
