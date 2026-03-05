@@ -150,7 +150,7 @@ def create_resume():
     contact_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
     contact_para.paragraph_format.space_after = Pt(4)
     contact_run = contact_para.add_run(
-        'Kolkata, India  |  aditya818610@gmail.com  |  +91 8335878691  |  '
+        'Kolkata, India  |  aaddiityaa7@gmail.com  |  +91 8335878691  |  '
         'linkedin.com/in/aditya-singh-43162136b'
     )
     contact_run.font.name = 'Arial'
