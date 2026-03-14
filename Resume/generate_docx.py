@@ -291,6 +291,16 @@ def create_resume():
     add_section_header(doc, 'CASE STUDIES')
 
     add_job_entry(doc,
+        'Full Technical SEO Audit & Implementation  —  A.S. Enterpriis',
+        'March 2026',
+        [
+            'Conducted a comprehensive 16-point Next.js App Router SEO audit, achieving a 100% compliance score and resolving critical indexation blockers.',
+            'Implemented dynamic sitemaps, semantic JSON-LD structured data (Product, ItemList, BreadcrumbList), and programmatic canonicals.',
+            'Resulted in a 1,600% increase in indexed URLs in Google Search Console, transforming a single-page presence into 17 high-intent B2B organic entry points.',
+        ]
+    )
+
+    add_job_entry(doc,
         'Diagnosing & Fixing a Silent GA4 Analytics Failure  —  A.S. Enterpriis',
         'March 2026',
         [
